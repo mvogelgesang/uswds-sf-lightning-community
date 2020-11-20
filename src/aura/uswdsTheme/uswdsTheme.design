@@ -82,6 +82,7 @@
     name="socialMediaNavigationLinkSetId"
     label="Footer Social Nav Menu Name"
     default=""
+    datasource="apex://uswds_navigationLinkSet"
   />
   <design:attribute
     name="agencyName"
