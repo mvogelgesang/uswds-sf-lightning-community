@@ -4,6 +4,8 @@
     default="Default_Navigation"
     label="Navigation Set Name"
     required="true"
+    datasource="apex://uswds_navigationLinkSet"
+    description="Select Navigation Menu that is associated to this community. Convention: {community name} - {nav menu name}. Selecting a nav menu from another community will not render."
   ></design:attribute>
   <design:attribute
     name="sectionTitle"

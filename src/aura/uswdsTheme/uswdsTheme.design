@@ -19,7 +19,8 @@
   <design:attribute
     name="secondaryNavigationLinkSetId"
     label="Header Secondary Nav Menu Name"
-    description="Allows you to add links below the search box such as 'advanced search' or others that may be relevant"
+    datasource="apex://uswds_navigationLinkSet"
+    description="Allows you to add links below the search box such as 'advanced search' or others that may be relevant. Select Navigation Menu that is associated to this community. Convention: {community name} - {nav menu name}. Selecting a nav menu from another community will not render."
   />
   <design:attribute
     name="customNavToggle"
@@ -71,18 +72,20 @@
   <design:attribute
     name="footerMenuNavigationLinkSetId"
     label="Footer Main Nav Menu Name"
-    default=""
+    datasource="apex://uswds_navigationLinkSet"
+    description="Select Navigation Menu that is associated to this community. Convention: {community name} - {nav menu name}. Selecting a nav menu from another community will not render."
   />
   <design:attribute
     name="boilerplateLinkNavigationLinkSetId"
     label="Footer Secondary Nav Menu Name"
-    default=""
+    datasource="apex://uswds_navigationLinkSet"
+    description="Select Navigation Menu that is associated to this community. Convention: {community name} - {nav menu name}. Selecting a nav menu from another community will not render."
   />
   <design:attribute
     name="socialMediaNavigationLinkSetId"
     label="Footer Social Nav Menu Name"
-    default=""
     datasource="apex://uswds_navigationLinkSet"
+    description="Select Navigation Menu that is associated to this community. Convention: {community name} - {nav menu name}. Selecting a nav menu from another community will not render."
   />
   <design:attribute
     name="agencyName"
