@@ -10,13 +10,18 @@ global class uswds_navigationLinkSet extends VisualEditor.DynamicPickList{
     
     }
   global override VisualEditor.DynamicPickListRows getValues() {
-    
-    
+    List<NavigationLinkSet> navigationMenuList;
     VisualEditor.DataRow defaultValue = getDefaultValue();
     /* Get the current Network Id of the community */
-    //String networkId = Network.getNetworkId();
-    //System.debug('network ID: ' + networkId);
-    List<NavigationLinkSet> navigationMenuList = [Select Id, DeveloperName, MasterLabel, NetworkId, Network.Name from NavigationLinkSet];
+    String networkId = Network.getNetworkId();
+    System.debug('network ID: ' + networkId);
+    if (networkId == null) {
+      navigationMenuList = [Select Id, DeveloperName, MasterLabel, NetworkId, Network.Name from NavigationLinkSet];
+      System.debug('NO NETWORK ID');
+    }
+    else {  
+      navigationMenuList = [Select Id, DeveloperName, MasterLabel, NetworkId, Network.Name from NavigationLinkSet where NetworkId = :networkId];
+    }    
     /* Declare a variable of type VisualEditor.DynamicPicklistRows, where value of the picklist will be added */
     VisualEditor.DynamicPickListRows navMenus = new VisualEditor.DynamicPickListRows();
 
