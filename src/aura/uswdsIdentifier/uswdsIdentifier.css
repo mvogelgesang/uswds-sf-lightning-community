@@ -1,0 +1,7 @@
+.THIS .usa-identifier__logos {
+    width: 3rem;
+    height: 3rem;
+}
+.THIS .usa-identifier__logo>img{
+    content: t('url(' + brandLogoImage + ')');
+}

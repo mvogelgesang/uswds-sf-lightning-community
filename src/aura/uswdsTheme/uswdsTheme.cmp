@@ -179,7 +179,7 @@
   </div>
 
   <!-- FOOTER -->
-  <div class="usa-footer usa-footer--big">
+  <footer class="usa-footer usa-footer--big">
     <div class="grid-container usa-footer__return-to-top">
       <a href="#">Return to top</a>
     </div>
@@ -209,30 +209,29 @@
     <div class="usa-footer__secondary-section">
       <div class="grid-container">
         <div class="grid-row grid-gap">
-          <div
+            <!-- collapsable section which opens up to a drop zone for components-->
+              <aura:if isTrue="{!v.footerEmailSignUpToggle == 'On'}">
+                <div 
+                  class="card:grid-col-12 margin-top-3 mobile-lg:margin-top-0 mobile-lg:grid-col-6"
+                >
+                  {!v.footerEmailSignUp}
+                </div>
+
+              </aura:if>
+           <div
             aura:id="footer_secondary_1"
-            class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2"
+            class="usa-footer__contact-links mobile-lg:grid-col-12"
           >
-            <div class="mobile-lg:grid-col-auto">
-              <a href="{!v.agencyURL}">
-                <div class="logoFooter"></div>
-              </a>
-            </div>
-            <div class="mobile-lg:grid-col-auto">
-              <h3 class="usa-footer__logo-heading">{!v.agencyName}</h3>
-            </div>
-          </div>
-          <div
-            aura:id="footer_secondary_2"
-            class="usa-footer__contact-links mobile-lg:grid-col-6"
-          >
+<div class="grid-row grid-gap">
+            <div aura:id="footer_socialMediaNav">
             <c:uswdsSocialMediaNavMenu
               navigationLinkSetId="{!v.socialMediaNavigationLinkSetId}"
             />
-
+			</div>
+            <div aura:id="footer_ContactCenter">
             <h3 class="usa-footer__contact-heading">{!v.contactCenterName}</h3>
             <address class="usa-footer__address">
-              <div class="usa-footer__contact-info grid-row grid-gap">
+              <div class="usa-footer__contact-info grid-row grid-gap" >
                 <aura:if isTrue="{! not(empty(v.contactPhone))}">
                   <div class="grid-col-auto">
                     <a href="{!'tel:'+ v.contactPhone}">{!v.contactPhone}</a>
@@ -250,40 +249,21 @@
                 </aura:if>
               </div>
             </address>
+                   </div>
+    
           </div>
-          <!-- collapsable section which opens up to a drop zone for components-->
-          <aura:if isTrue="{!v.footerEmailSignUpToggle == 'On'}">
-            <div
-              aura:id="footer_secondary_3"
-              class="card:grid-col-12 margin-top-3 mobile-lg:margin-top-0 mobile-lg:grid-col-4"
-            >
-              {!v.footerEmailSignUp}
             </div>
-          </aura:if>
-          <div class="mobile-lg:grid-col-12">
-            <hr style="margin: 1rem 0px;" />
-            <nav
-              class="usa-footer__nav boilerplate"
-              aria-label="Footer boilerplate navigation"
-              data-aura-rendered-by="264:0"
-            >
-              <c:uswdsFooterNavMenuSmall
-                navigationLinkSetId="{!v.boilerplateLinkNavigationLinkSetId}"
-                alignment="Horizontal"
-                menuJustification="Center"
-              />
-            </nav>
-          </div>
+         
         </div>
       </div>
     </div>
-    <div class="open-source-banner">
+    </footer>
+    <c:uswdsIdentifier />
+    <div style="background-color: #252f3e; color: white; font-size: small; text-align: center; padding: 0.5rem 0rem;">
       <p>
-        This site template is open sourced! Learn more at
-        <a href="https://github.com/GSA/uswds-sf-lightning-community"
-          >https://github.com/GSA/uswds-sf-lightning-community</a
-        >
+        This site template is open sourced! Learn more at&nbsp;
+        <a href="https://github.com/GSA/uswds-sf-lightning-community" style="color: #d3d3d3; text-decoration: underline;">https://github.com/GSA/uswds-sf-lightning-community</a>
       </p>
     </div>
-  </div>
+    
 </aura:component>
