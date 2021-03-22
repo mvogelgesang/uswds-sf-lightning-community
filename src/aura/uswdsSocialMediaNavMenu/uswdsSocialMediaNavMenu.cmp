@@ -26,8 +26,8 @@
         start="{! v.startNumber }"
       >
         <div class="grid-col-auto">
-          <a class="usa-social-link" data-menu-item-id="{!item.id}">
-            <c:fontAwesomeIcon properName="{!item.label}" />
+          <a class="usa-social-link">
+            <c:fontAwesomeIcon properName="{!item.label}" dataMenuId="{!item.id}"/>
             <span>{!item.label}</span>
           </a>
         </div>

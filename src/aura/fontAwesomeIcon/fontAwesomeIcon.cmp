@@ -27,9 +27,15 @@
     default="fa-2x"
     description="name of the Font Awesome icon"
   />
+  <aura:attribute
+    name="dataMenuId"
+    type="String"
+    default=""
+    description="menu ID if used as a navigation menu item"
+  />
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-  <i class="{! v.prefix + ' fa-'+ v.iconName + ' ' + v.size}">
+  <i class="{! v.prefix + ' fa-'+ v.iconName + ' ' + v.size}" data-menu-item-id="{! v.dataMenuId }">
     <span>{! v.properName }</span>
   </i>
 </aura:component>
