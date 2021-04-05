@@ -1,6 +1,6 @@
 <aura:component
   extends="forceCommunity:navigationMenuBase"
-  implements="forceCommunity:profileMenuInterface"
+  implements="forceCommunity:profileMenuInterface,forceCommunity:availableForAllPageTypes"
   access="global"
 >
   <ltng:require styles="{!$Resource.uswds_2_x+'/css/uswds.min.css'}" />
@@ -10,7 +10,7 @@
   <aura:attribute
     name="navigationLinkSetId"
     type="String"
-    default="profileMenu"
+    default=""
   />
   <aura:attribute
     name="startNumber"
@@ -18,10 +18,29 @@
     default="1"
     description="Start number for the navigation menu. Default = 1 which skips the first entry, Home. Changing to 0 will include a link to Home in the navigation menu output."
   />
+  <aura:attribute name="loginUrl" type="String" default="login"/>
 
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
   <aura:if isTrue="{!v.loggedIn}">
+    <div class="">
+    <button class="usa-button site-accordion-profileMenuButton" aria-controls="menu-options" aria-expanded="false" onclick="{!c.menuToggle}">My Account
+      <i class="fas fa-chevron-down" aura:id="chevDown"></i>
+      <i class="fas fa-chevron-up hidden" aura:id="chevUp"></i>
+    </button>
+    <div id="menu-options" class="menu-options hidden" aura:id="menu-options">
+    <aura:iteration
+        items="{!v.menuItems}"
+        var="item"
+        start="{! v.startNumber }"
+      >
+        
+<div class="menu-item" data-menu-item-id="{!item.id}">{!item.label}</div>
+        
+      </aura:iteration>
+    </div>
+    </div>
+    <!--
     <lightning:buttonMenu
       iconName="action:user"
       label="My Account"
@@ -34,9 +53,9 @@
       >
         <lightning:menuItem label="{!item.label}" value="{!item.id}" />
       </aura:iteration>
-    </lightning:buttonMenu>
+    </lightning:buttonMenu>-->
     <aura:set attribute="else">
-      <a href="login">Login</a>
+      <a href="{! v.loginUrl }"><button class="usa-button float-right">Login</button></a>
     </aura:set>
   </aura:if>
 </aura:component>

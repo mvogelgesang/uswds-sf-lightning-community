@@ -1,0 +1,25 @@
+.THIS .site-accordion-profileMenuButton {
+    background-color:#005ea2;
+    color:#fff;
+    background-image: none;
+    width: 10rem;
+}
+
+.THIS .menu-options {
+    width: 10rem;
+    display: block;
+    position: absolute;
+    background-color: white;
+    z-index: 10001;
+    padding: 10px 20px 0px;
+    border: 1px solid #005ea2;
+    border-radius: 5px;
+    margin-top: .5em;
+}
+.THIS .menu-item {
+    padding-bottom: 10px;
+}
+
+.THIS .hidden {
+    display: none;
+}

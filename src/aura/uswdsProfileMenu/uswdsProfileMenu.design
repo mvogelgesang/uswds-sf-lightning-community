@@ -1,0 +1,8 @@
+<design:component label="User Profile Menu">
+  <design:attribute
+    name="navigationLinkSetId"
+    default=""
+    label="Navigation Set Name"
+    required="true"
+  />
+  </design:component>
