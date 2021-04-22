@@ -25,8 +25,7 @@
   <aura:if isTrue="{!v.loggedIn}">
     <div class="">
     <button class="usa-button site-accordion-profileMenuButton" aria-controls="menu-options" aria-expanded="false" onclick="{!c.menuToggle}">My Account
-      <span aura:id="chevronDown"><i class="fas fa-chevron-down" ></i></span>
-      <span aura:id="chevronUp" class="hidden"><i class="fas fa-chevron-up" ></i></span>
+      &nbsp;<i class="fas fa-chevron-down" aura:id="profileMenuChevron" ></i>
     </button>
     <div id="menu-options" class="menu-options hidden" aura:id="menu-options">
     <aura:iteration
@@ -34,7 +33,7 @@
         var="item"
         start="{! v.startNumber }"
       >
-<div class="menu-item" data-menu-item-id="{!item.id}">{!item.label}</div>
+      <div class="menu-item" data-menu-item-id="{!item.id}">{!item.label}</div>
         
       </aura:iteration>
     </div>

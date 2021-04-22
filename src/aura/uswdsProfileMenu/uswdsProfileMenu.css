@@ -11,13 +11,21 @@
     position: absolute;
     background-color: white;
     z-index: 10001;
-    padding: 10px 20px 0px;
+    padding: 10px 20px 10px;
     border: 1px solid #005ea2;
     border-radius: 5px;
     margin-top: .5em;
 }
 .THIS .menu-item {
-    padding-bottom: 10px;
+    padding: 10px 0px;
+    border-bottom: 1px solid #d9d9d9;
+}
+.THIS .menu-item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.THIS .menu-item:last-child {
+    border-bottom: none;
 }
 
 .THIS .hidden {

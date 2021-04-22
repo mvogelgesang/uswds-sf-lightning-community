@@ -7,11 +7,10 @@
   },
   menuToggle: function(component, event, helper) {
     var profileMenu = component.find("menu-options");
-    var chevronUp = component.find("chevronUp");
-    var chevronDown = component.find("chevronDown");
+    var chevron = component.find("profileMenuChevron");
     $A.util.toggleClass(profileMenu, "hidden");
-    $A.util.toggleClass(chevronUp, "hidden");
-    $A.util.toggleClass(chevronDown, "hidden");
+    $A.util.toggleClass(chevron, "fa-chevron-down");
+    $A.util.toggleClass(chevron, "fa-chevron-up");
   },
   handleMenuSelect: function (component, event, helper) {
     console.log("handling menu select");
