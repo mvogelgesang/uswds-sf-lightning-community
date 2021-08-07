@@ -1,3 +1,12 @@
+- [Installation](#installation)
+  - [Dependencies](#dependencies)
+  - [Instructions](#instructions)
+    - [Experience Builder Setup](#experience-builder-setup)
+      - [Navigation Menu Setup](#navigation-menu-setup)
+      - [Change Theme Layout and Settings](#change-theme-layout-and-settings)
+      - [Add Font Awesome JS](#add-font-awesome-js)
+  - [Common Problems](#common-problems)
+
 # Installation
 
 Installation of this repository requires a working knowledge of the Salesforce Ant Migration Tool. More details can be found at [https://help.salesforce.com/articleView?id=sf.code_tools_ant_using.htm&type=5](https://help.salesforce.com/articleView?id=sf.code_tools_ant_using.htm&type=5).
@@ -14,6 +23,7 @@ Installation of this repository requires a working knowledge of the Salesforce A
 - Clone this repository
 - Set local build.properties to point at sandbox, `ant deployCode`
 - Enable Communities in your Salesforce org
+  - `Setup > Feature Settings > Digital Experiences > Settings > (Check) Enable Digital Experiences`
 - For new communities
   - Create new community (Setup > Digital Experiences > All Sites > New > Select Customer Account Portal
   - Provide Name > Builder > Theme
@@ -97,3 +107,16 @@ From Settings>Advanced.
 1. Click Save
 
 When saved you should not get any CSP errors.
+
+## Common Problems
+
+1. *Error:* You need to enable Experiences to be able to install Lightning pages of type CommThemeLayoutPage
+
+```
+All Component Failures:
+1.  communityThemeDefinitions/USWDS_Lightning_Community.communityThemeDefinition -- Error: Not available for deploy for this organization
+2.  flexipages/USWDS_Lightning_Community_themeLayout_Login.flexipage -- Error: You need to enable Experiences to be able to install Lightning pages of type CommThemeLayoutPage.
+3.  flexipages/USWDS_Lightning_Community_themeLayout_Default.flexipage -- Error: You need to enable Experiences to be able to install Lightning pages of type CommThemeLayoutPage.
+```
+
+> *Fix:* Setup > Feature Settings > Digital Experiences > Settings > (Check) Enable Digital Experiences
