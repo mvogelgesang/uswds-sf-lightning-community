@@ -2,8 +2,14 @@
   implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes"
   access="global"
 >
-  <ltng:require styles="{!$Resource.uswds_2_x+'/css/uswds.min.css'}" />
-  <ltng:require scripts="{!$Resource.uswds_2_x+'/js/uswds.min.js'}" />
+  <aura:attribute name="extJS" type="Boolean" default="Yes" />
+  <aura:if isTrue="{! v.extJS == 'Yes'}">
+    <aura:set attribute="else">
+      <ltng:require styles="{!$Resource.uswds_2_x+'/css/uswds.min.css'}" />
+      <ltng:require scripts="{!$Resource.uswds_2_x+'/js/uswds-init.min.js'}" />
+      <ltng:require scripts="{!$Resource.uswds_2_x+'/js/uswds.min.js'}"
+    /></aura:set>
+  </aura:if>
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
   <aura:attribute
     name="siteName"
@@ -50,7 +56,7 @@
             <img
               class="usa-banner__icon usa-media-block__img"
               src="{!$Resource.uswds_2_x+'/img/icon-dot-gov.svg'}"
-              alt="" 
+              alt=""
               role="img"
               aria-hidden="true"
             />
