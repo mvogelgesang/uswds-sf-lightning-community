@@ -1,5 +1,13 @@
 {
   "orgName": "markovogelgesang company",
   "edition": "Developer",
-  "features": []
+  "features": ["COMMUNITIES"],
+  "settings": {
+    "experienceBundleSettings": {
+      "enableExperienceBundleMetadata": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    }
+  }
 }

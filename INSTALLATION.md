@@ -99,3 +99,8 @@ From Settings>Advanced.
 1. Click Save
 
 When saved you should not get any CSP errors.
+
+
+### SFDX
+
+`sfdx force:community:create --name "uswds example" --templatename "Customer Account Portal" -p example`

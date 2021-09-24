@@ -8,5 +8,5 @@
   "name": "uswds-sf-lightning-community",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "52.0"
+  "sourceApiVersion": "48.0"
 }
