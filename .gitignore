@@ -82,3 +82,4 @@ build.xml
 retrieveUnpackaged/
 retrieveUnpackagedstatic/
 static/
+.sfdx/
