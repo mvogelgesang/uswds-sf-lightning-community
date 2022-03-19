@@ -1,0 +1,23 @@
+<aura:component
+  implements="forceCommunity:availableForAllPageTypes"
+  access="global"
+>
+  <ltng:require styles="{!$Resource.uswds_2_x+'/css/uswds.min.css'}" />
+  <ltng:require scripts="{!$Resource.uswds_2_x+'/js/uswds.min.js'}" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:attribute
+    name="buttonType"
+    type="string"
+    default="Default"
+    description="Valid values are: default, secondary color, accent cool color, accent color warm, base color, outline, outline inverse"
+  />
+  <aura:attribute name="unstyled" type="boolean" default="false" />
+  <aura:attribute name="big" type="boolean" default="false" />
+  <aura:attribute name="disabled" type="boolean" default="false" />
+  <aura:attribute name="buttonLabel" type="string" default="Button" />
+  <aura:attribute name="customClassName" type="string" />
+  <aura:attribute name="props" type="map" default="{}" />
+  <span aura:id="buttonContainer" />
+</aura:component>
