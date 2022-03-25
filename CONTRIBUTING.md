@@ -2,16 +2,18 @@
 
 We're so glad you're thinking about contributing to a U.S. Government open source project! If you're unsure about anything, just ask -- or submit the issue or pull request anyway. The worst that can happen is you'll be politely asked to change something. We love all friendly contributions.
 
-- [How to contribute to this project](#how-to-contribute-to-this-project)
-- [Public domain](#public-domain)
-- [Issue Guidelines](#issue-guidelines)
-- [Code Guidelines](#code-guidelines)
-- [Establishing a Development Environment](#establishing-a-development-environment)
-- [Testing](#testing)
-  - [Testing Principles](#testing-principles)
-  - [Deploying Tests](#deploying-tests)
-  - [Running Tests](#running-tests)
-  - [Creating New Tests](#creating-new-tests)
+- [Welcome](#welcome)
+  - [How to contribute to this project](#how-to-contribute-to-this-project)
+  - [Public domain](#public-domain)
+  - [Issue Guidelines](#issue-guidelines)
+  - [Code Guidelines](#code-guidelines)
+  - [Establishing a Development Environment](#establishing-a-development-environment)
+  - [Testing](#testing)
+    - [Testing Principles](#testing-principles)
+    - [Deploying Tests](#deploying-tests)
+    - [Running Tests](#running-tests)
+    - [Creating New Tests](#creating-new-tests)
+    - [Adding Tests to Test Suite](#adding-tests-to-test-suite)
 
 ## How to contribute to this project
 
@@ -92,6 +94,8 @@ Test `describe` and `it` statements should read as sentences so as to be readily
 If creating a new component, a brand new static resource needs to be created. SFDX provides a shortcut,
 
 `sfdx force:lightning:test:create -d test/staticresources -n uswds_lts_{component name}`
+
+### Adding Tests to Test Suite
 
 Once the test has been created, it should be referenced in `test/aura/jasmineTests/jasmineTests.app`.
 
