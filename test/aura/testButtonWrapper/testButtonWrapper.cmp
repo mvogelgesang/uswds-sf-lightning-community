@@ -1,0 +1,76 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+  <aura:handler
+    name="buttonClickEventHandler"
+    event="c:uswdsButtonEvent"
+    action="{!c.handleButtonClickEvent}"
+  />
+
+  <aura:attribute name="name" type="string" />
+  <aura:attribute
+    name="buttonType"
+    type="string"
+    default="Default"
+    required="true"
+  />
+  <aura:attribute name="output" type="string" default="" />
+
+  <!-- the order of the c:uswdsButton's is tied to test classes. If additional test classes are needed, new instances of the component to the end-->
+  <section
+    class="
+      margin-top-105
+      padding-bottom-105
+      usa-prose
+      border-bottom-05 border-primary-light
+    "
+  >
+    <h2>Example Button 1</h2>
+    <p>Upon click, text is inserted into a paragraph beneath the button.</p>
+    <c:uswdsButton aura:id="uswdsButton" name="{!v.name}" disabled="false" />
+    <p id="testParagraph">{!v.output}</p>
+  </section>
+
+  <section
+    class="
+      margin-top-105
+      padding-bottom-105
+      usa-prose
+      border-bottom-05 border-primary-light
+    "
+  >
+    <h2>Example Button 2</h2>
+    <p>
+      Upon click, this button changes type from 'outline' to 'secondary color'.
+      Changing the value of buttonType, big, unstyled, or customClassName
+      triggers a change handler in the uswdsButton component which takes all of
+      those attribute values and determines the correct CSS class names to
+      insert into the class attribute.
+    </p>
+    <c:uswdsButton
+      aura:id="changeColor"
+      name="{!v.name}"
+      disabled="false"
+      buttonType="outline"
+    />
+  </section>
+
+  <section
+    class="
+      margin-top-105
+      padding-bottom-105
+      usa-prose
+      border-bottom-05 border-primary-light
+    "
+  >
+    <h2>Example Button 3</h2>
+    <p>
+      Upon click, this button maintains buttonType but the disabled property is
+      set which prevents it from being clicked.
+    </p>
+    <c:uswdsButton
+      aura:id="disableMe"
+      name="{!v.name}"
+      disabled="false"
+      buttonLabel="Click me to disable"
+    />
+  </section>
+</aura:component>

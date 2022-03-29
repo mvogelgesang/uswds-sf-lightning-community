@@ -3,6 +3,7 @@
     <types>
         <members>jasmineTests</members>
         <members>lts_jasmineRunner</members>
+        <members>testButtonWrapper</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

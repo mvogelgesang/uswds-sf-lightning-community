@@ -92,13 +92,15 @@ describe("USWDS Button", function () {
         });
     });
     it(`Button label can be set`, function (done) {
-      $T.createComponent("c:uswdsButton", { buttonLabel: "this is a big label" }, true)
+      $T.createComponent(
+        "c:uswdsButton",
+        { buttonLabel: "this is a big label" },
+        true
+      )
         .then(function (component) {
           expect(
-            document
-              .querySelector("[data-testid='button']")
-              .textContent)
-              .toContain("this is a big label");
+            document.querySelector("[data-testid='button']").textContent
+          ).toContain("this is a big label");
           done();
         })
         .catch(function (e) {
@@ -119,35 +121,56 @@ describe("USWDS Button", function () {
           done.fail(e);
         });
     });
-    it(`Other attributes can be passed as key value pairs- illegitimate attributes do not get displayed`, function (done) {
-      $T.createComponent(
-        "c:uswdsButton",
-        {
-          props: {
-            name: "buttonName",
-            type: "submit",
-            value: "buttonValue",
-            notALegitAttribute: "blah"
-          }
-        },
-        true
-      )
+  });
+  describe("Handle button clicks via event propogation via various means", function () {
+    it("Upon click places text into paragraph", function (done) {
+      //lightning:tile
+      $T.createComponent("c:testButtonWrapper", {}, true)
         .then(function (component) {
           expect(
-            document
-              .querySelector("[data-testid='button']")
-              .getAttribute("name")
-          ).toBe("buttonName");
+            document.querySelectorAll("[data-testid='button']")[0].textContent
+          ).toContain("Button");
+          //click the button
+          var button = component.find("uswdsButton");
+          button.getElement().click();
+          expect(
+            document.getElementById("testParagraph").textContent
+          ).toContain("I was clicked");
+          done();
+        })
+        .catch(function (e) {
+          done.fail(e);
+        });
+    });
+    it("Changes buttonType onclick", function (done) {
+      $T.createComponent("c:testButtonWrapper", {}, true)
+        .then(function (component) {
+          //click the button
+          var button = component.find("changeColor");
+          button.getElement().click();
           expect(
             document
-              .querySelector("[data-testid='button']")
-              .getAttribute("type")
-          ).toBe("submit");
+              .querySelectorAll("[data-testid='button']")[1]
+              .getAttribute("class")
+          ).toBe("usa-button usa-button--secondary");
+          done();
+        })
+        .catch(function (e) {
+          done.fail(e);
+        });
+    });
+    it("Changes to disabled onclick", function (done) {
+      var buttonName = "disable";
+      $T.createComponent("c:testButtonWrapper", { name: buttonName }, true)
+        .then(function (component) {
+          //click the button
+          var button = component.find("disableMe");
+          button.getElement().click();
           expect(
             document
-              .querySelector("[data-testid='button']")
-              .getAttribute("notALegitAttribute")
-          ).toBe(null);
+              .querySelectorAll("[data-testid='button']")[2]
+              .hasAttribute("disabled")
+          ).toBe(true);
           done();
         })
         .catch(function (e) {

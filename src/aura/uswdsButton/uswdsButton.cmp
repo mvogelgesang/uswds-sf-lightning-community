@@ -5,12 +5,41 @@
   <ltng:require styles="{!$Resource.uswds_2_x+'/css/uswds.min.css'}" />
   <ltng:require scripts="{!$Resource.uswds_2_x+'/js/uswds.min.js'}" />
 
-  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:handler
+    name="init"
+    value="{!this}"
+    action="{!c.composeButtonTypeAttributes}"
+  />
+  <!-- change handlers are used since various attributes come together to form the css classes needed to render a button. Without the change handlers, one cannot update the style of button via events -->
+  <aura:handler
+    name="change"
+    value="{!v.buttonType}"
+    action="{!c.composeButtonTypeAttributes}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.big}"
+    action="{!c.composeButtonTypeAttributes}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.unstyled}"
+    action="{!c.composeButtonTypeAttributes}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.customClassName}"
+    action="{!c.composeButtonTypeAttributes}"
+  />
+
+  <!-- any components which wrap the uswdsButton should have an aura:handler declared with the same name and type -->
   <aura:registerEvent
     name="buttonClickEventHandler"
     type="c:uswdsButtonEvent"
   />
   <aura:attribute name="name" type="string" required="true" />
+  <aura:attribute name="class" type="string" />
+  <aura:attribute name="value" type="string" />
   <aura:attribute
     name="buttonType"
     type="string"
@@ -22,6 +51,15 @@
   <aura:attribute name="disabled" type="boolean" default="false" />
   <aura:attribute name="buttonLabel" type="string" default="Button" />
   <aura:attribute name="customClassName" type="string" />
-  <aura:attribute name="props" type="map" default="{}" />
-  {!v.body}
+
+  <button
+    name="{!v.name}"
+    class="{!v.class}"
+    disabled="{!v.disabled}"
+    onclick="{!c.onClick}"
+    data-testid="button"
+    value="{!v.value}"
+  >
+    {!v.buttonLabel}
+  </button>
 </aura:component>

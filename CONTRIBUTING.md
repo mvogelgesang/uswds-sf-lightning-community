@@ -14,6 +14,7 @@ We're so glad you're thinking about contributing to a U.S. Government open sourc
     - [Running Tests](#running-tests)
     - [Creating New Tests](#creating-new-tests)
     - [Adding Tests to Test Suite](#adding-tests-to-test-suite)
+    - [Creating Test Components](#creating-test-components)
 
 ## How to contribute to this project
 
@@ -102,3 +103,7 @@ Once the test has been created, it should be referenced in `test/aura/jasmineTes
 Additionally, the new staticresource should be added to package.xml which can be taken care of by the following sfdx command. This command also supports the removal of files.
 
 `sfdx force:source:manifest:create --sourcepath test --manifestname test/package.xml`
+
+### Creating Test Components
+
+`sfdx force:lightning:component:create -n {component name} -d test/aura`

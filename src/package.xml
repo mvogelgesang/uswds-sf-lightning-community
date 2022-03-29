@@ -5,8 +5,9 @@
         <members>fontAwesomeIcon</members>
         <members>uswds404</members>
         <members>uswdsButton</members>
-        <members>uswdsCardList</members>
+        <members>uswdsButtonEvent</members>
         <members>uswdsCardElement</members>
+        <members>uswdsCardList</members>
         <members>uswdsFooterNavMenu</members>
         <members>uswdsFooterNavMenuSmall</members>
         <members>uswdsIdentifier</members>

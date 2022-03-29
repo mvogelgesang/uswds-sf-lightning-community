@@ -1,7 +1,6 @@
 ({
   buttonTypeMap: function (buttonType) {
     buttonType = buttonType.toLowerCase();
-    // default english language content
     var buttonTypes = {
       "secondary color": "usa-button--secondary",
       "accent cool color": "usa-button--accent-cool",
