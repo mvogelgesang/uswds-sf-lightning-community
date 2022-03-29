@@ -21,10 +21,12 @@
     $A.createComponent(
       "aura:html",
       {
+        "aura:id": "abc",
         tag: "button",
         body: buttonLabel,
         //takes any key value pairs passed as an object in props as well as outputs from classnames() to produce attribute pairs
         HTMLAttributes: Object.assign(
+          { onclick: cmp.getReference("c.onClick") },
           props,
           { disabled: disabled },
           { class: classes },
@@ -33,10 +35,9 @@
       },
       function (buttonComponent, status, errorMessage) {
         if (status === "SUCCESS") {
-          // Finding the div by aura:id and pushing newly created component into it.
-          var outerDiv = cmp.find("buttonContainer").get("v.body");
-          outerDiv.push(buttonComponent);
-          cmp.find("buttonContainer").set("v.body", outerDiv);
+          var body = cmp.get("v.body");
+          body.push(buttonComponent);
+          cmp.set("v.body", body);
         }
         if (status === "ERROR") {
           console.error(errorMessage);
@@ -45,9 +46,8 @@
     );
   },
   onClick: function (cmp, event, helper) {
-    var id = event.target.dataset.menuItemId;
-    if (id) {
-      cmp.getSuper().navigate(id);
-    }
+    console.log("i was clicked");
+    var compEvent = cmp.getEvent("buttonClickEventHandler");
+    compEvent.fire();
   }
 });

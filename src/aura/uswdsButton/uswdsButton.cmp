@@ -6,7 +6,11 @@
   <ltng:require scripts="{!$Resource.uswds_2_x+'/js/uswds.min.js'}" />
 
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-
+  <aura:registerEvent
+    name="buttonClickEventHandler"
+    type="c:uswdsButtonEvent"
+  />
+  <aura:attribute name="name" type="string" required="true" />
   <aura:attribute
     name="buttonType"
     type="string"
@@ -19,5 +23,5 @@
   <aura:attribute name="buttonLabel" type="string" default="Button" />
   <aura:attribute name="customClassName" type="string" />
   <aura:attribute name="props" type="map" default="{}" />
-  <span aura:id="buttonContainer" />
+  {!v.body}
 </aura:component>
