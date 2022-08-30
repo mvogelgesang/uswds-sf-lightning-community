@@ -31,7 +31,7 @@ Installation of this repository requires a working knowledge of the Salesforce A
 
 - `sfdx force:org:create -f config/scratch-def.json -a {scratchOrgName}`
 - `sfdx force:mdapi:deploy -d src/ -w 100 -u {scratchOrgName}`
-- `sfdx force:org:open -u {scratchOrgName}`
+- `sfdx force:org:open -p /lightning/setup/SetupNetworks/home -u {scratchOrgName}`
 
 ## ANT Instructions
 
