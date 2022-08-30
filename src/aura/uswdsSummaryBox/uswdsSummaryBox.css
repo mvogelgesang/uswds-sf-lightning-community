@@ -1,2 +1,7 @@
-.THIS {
+.THIS .usa-list {
+  list-style: disc;
+}
+
+.THIS .usa-summary-box__heading {
+  font-weight: bold;
 }
