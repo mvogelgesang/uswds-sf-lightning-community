@@ -1,11 +1,11 @@
-describe("{{component name}}", function () {
+describe("USWDS Summary Box", function () {
   // declare any variables that need to be available in each test
-  var varA, varB;
+  var plainText;
+
   beforeEach(function () {
-    varA = "hello";
-    varB = {
-      label: "Step 1",
-      status: "Completed"
+    plainText = {
+      heading: "hello",
+      body: "The quick brown fox jumps over the lazy dog"
     };
   });
   afterEach(function () {
@@ -13,29 +13,28 @@ describe("{{component name}}", function () {
     // so we need to clear that div out at the end of each spec.
     $T.clearRenderedTestComponents();
   });
-  it("{{describe the specific functionality being tested}}", function (done) {
+  it("plain text passed as arguments is rendered", function (done) {
     /**
      * createComponent - generates a component for testing
      * param - string - component reference "c:componentName"
      * param - object - component parameters {attributeA: "", attributeB:""}
      * param - boolean - whether or not the component needs to be rendered)
      */
-
     $T.createComponent(
-      "{{c:componentName}}",
+      "c:uswdsSummaryBox",
       {
-        attributeA: "",
-        attributeB: ""
+        heading: plainText.heading,
+        body: plainText.body
       },
       true
     )
       .then(function (component) {
         expect(
-          document.getElementsByClassName("{{my specific class}}").length
-        ).toEqual(5);
+          document.getElementById("summary-box-key-information").textContent
+        ).toEqual(plainText.heading);
         expect(
-          document.getElementsByClassName("{{my specific class")[0].textContent
-        ).toContain(varA);
+          document.getElementsByClassName("usa-summary-box__text")[0].innerHTML
+        ).toContain(plainText.body);
         done();
       })
       .catch(function (e) {
