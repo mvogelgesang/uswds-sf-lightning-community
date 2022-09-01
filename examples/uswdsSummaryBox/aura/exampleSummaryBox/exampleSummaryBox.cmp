@@ -2,8 +2,15 @@
   implements="forceCommunity:availableForAllPageTypes"
   access="global"
 >
+  <!-- uswdsSummaryBox utilizes component facets https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_facets.htm. Idea being that the component wraps your content and specific sections are set with <aura:set> markup. 
+    <c:uswdsSummaryBox>
+        <aura:set attribute="heading">{{content}}</aura:set>
+        <aura:set attribute="body">{{content}}</aura:set>
+    </c:uswdsSummaryBox>
+-->
+  <h1>Summary Box Example</h1>
   <c:uswdsSummaryBox>
-    <aura:set attribute="heading">Hello</aura:set>
+    <aura:set attribute="heading">Key Information</aura:set>
     <aura:set attribute="body">
       <ul class="usa-list">
         <li>
