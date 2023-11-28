@@ -24,9 +24,9 @@
     "org:create": "sf org create scratch -f config/scratch-def.json -a $(date '+%Y%m%d')_$(git branch --show-current) -w 10 -y 30 && sf config set target-org=$(date '+%Y%m%d')_$(git branch --show-current)",
     "uswds:latest": "npm install @uswds/uswds@latest",
     "uswds:sync": "rsync -Rr node_modules/@uswds/uswds/*.md node_modules/@uswds/uswds/dist/css/*.min.css* node_modules/@uswds/uswds/dist/scss/* node_modules/@uswds/uswds/dist/fonts/*/*.{ttf,woff} node_modules/@uswds/uswds/dist/img/** node_modules/@uswds/uswds/dist/js/*.min.js* force-app/main/default/staticresources/uswds_3_x &&  mv force-app/main/default/staticresources/uswds_3_x/node_modules/@uswds/uswds/*.md force-app/main/default/staticresources/uswds_3_x && mv force-app/main/default/staticresources/uswds_3_x/node_modules/@uswds/uswds/dist force-app/main/default/staticresources/uswds_3_x && rm -rf force-app/main/default/staticresources/uswds_3_x/node_modules",
-    "test:unit": "sfdx-lwc-jest",
-    "test:unit:debug": "sfdx-lwc-jest --debug",
-    "test:unit:watch": "sfdx-lwc-jest --watch"
+    "test": "sfdx-lwc-jest",
+    "test:debug": "sfdx-lwc-jest --debug",
+    "test:watch": "sfdx-lwc-jest --watch"
   },
   "repository": {
     "type": "git",
