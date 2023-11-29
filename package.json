@@ -21,7 +21,12 @@
     "npm": ">=8.11.0"
   },
   "scripts": {
+    "deploy": "sf project deploy start --source-dir force-app/main/default",
+    "deploy:translations": "sf project deploy start --source-dir translations/main/default",
     "org:create": "sf org create scratch -f config/scratch-def.json -a $(date '+%Y%m%d')_$(git branch --show-current) -w 10 -y 30 && sf config set target-org=$(date '+%Y%m%d')_$(git branch --show-current)",
+    "org:create:noTranslations": "sf org create scratch -f config/scratch-def-no-translations.json -a $(date '+%Y%m%d')_$(git branch --show-current) -w 10 -y 30 && sf config set target-org=$(date '+%Y%m%d')_$(git branch --show-current)",
+    "retrieve": "sf project retrieve start --source-dir force-app/main/default",
+    "retrieve:translations": "sf project retrieve start --source-dir translations/main/default",
     "uswds:latest": "npm install @uswds/uswds@latest",
     "uswds:sync": "rsync -Rr node_modules/@uswds/uswds/*.md node_modules/@uswds/uswds/dist/css/*.min.css* node_modules/@uswds/uswds/dist/scss/* node_modules/@uswds/uswds/dist/fonts/*/*.{ttf,woff} node_modules/@uswds/uswds/dist/img/** node_modules/@uswds/uswds/dist/js/*.min.js* force-app/main/default/staticresources/uswds_3_x &&  mv force-app/main/default/staticresources/uswds_3_x/node_modules/@uswds/uswds/*.md force-app/main/default/staticresources/uswds_3_x && mv force-app/main/default/staticresources/uswds_3_x/node_modules/@uswds/uswds/dist force-app/main/default/staticresources/uswds_3_x && rm -rf force-app/main/default/staticresources/uswds_3_x/node_modules",
     "test": "sfdx-lwc-jest",

@@ -3,6 +3,10 @@
     {
       "path": "force-app",
       "default": true
+    },
+    {
+      "path": "translations",
+      "default": false
     }
   ],
   "name": "uswds-lightning-community-theme",
