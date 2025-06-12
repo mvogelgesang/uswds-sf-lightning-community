@@ -1,0 +1,23 @@
+// src/scss/theme.scss
+
+// Core USWDS imports
+@forward "@uswds/uswds/dist/scss/stylesheets/uswds";
+
+// Import only the components you need to minimize CSS size
+// @forward "@uswds/uswds/dist/scss/elements"; // Basic HTML elements
+// @forward "@uswds/uswds/dist/scss/layout"; // Grid, etc.
+//
+// // Specific Components
+// @forward "@uswds/uswds/dist/scss/components/usa-accordion";
+// @forward "@uswds/uswds/dist/scss/components/usa-alert";
+// @forward "@uswds/uswds/dist/scss/components/usa-button";
+// @forward "@uswds/uswds/dist/scss/components/usa-card";
+// Add other components like: usa-banner, usa-breadcrumb, usa-checkbox, etc.
+
+// Utility classes (optional, can be large)
+// @forward "@uswds/uswds/dist/scss/utilities";
+
+// Custom project-specific styles can go here
+.my-custom-style {
+  // ...
+}
