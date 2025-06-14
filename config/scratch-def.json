@@ -1,13 +1,23 @@
 {
   "orgName": "USWDS Lightning Community Theme",
   "edition": "Enterprise",
-  "features": ["Communities"],
+  "features": ["Communities", "EinsteinGPTForDevelopers"],
   "settings": {
     "communitiesSettings": {
       "enableNetworksEnabled": true
     },
     "experienceBundleSettings": {
       "enableExperienceBundleMetadata": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true,
+      "enableLightningPreviewPref": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
     },
     "securitySettings": {
       "sessionSettings": {
