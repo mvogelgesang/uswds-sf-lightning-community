@@ -145,4 +145,21 @@ describe("c-uswds-accordion-builder", () => {
     );
     expect(container.allowMultipleSelectable).toBe(true);
   });
+
+  it("should expand the first section if isExpanded1 is set to true", async () => {
+    // Arrange
+    const element = createElement("c-uswds-accordion-builder", {
+      is: UswdsAccordionBuilder
+    });
+    element.isExpanded1 = true;
+    element.accordionTitle1 = "Lincoln";
+    document.body.appendChild(element);
+
+    await Promise.resolve();
+    const sections = element.shadowRoot.querySelectorAll(
+      "c-uswds-accordion-section"
+    );
+    console.log(sections);
+    expect(sections[0].isExpanded).toBe(true);
+  });
 });
