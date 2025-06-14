@@ -159,7 +159,6 @@ describe("c-uswds-accordion-builder", () => {
     const sections = element.shadowRoot.querySelectorAll(
       "c-uswds-accordion-section"
     );
-    console.log(sections);
     expect(sections[0].isExpanded).toBe(true);
   });
 });
