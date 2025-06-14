@@ -11,27 +11,39 @@
             targets="lightningCommunity__Default">
             <property name="accordionTitle1" type="String" label="First Accordion Title"
                 default="First Accordion Heading" />
-            <property name="accordionTitle2" type="String" label="Second Accordion Title"
+            <property name="isExpanded1" type="Boolean"
+                label="Expand first section on load?" default="false" />
+            <property
+                name="accordionTitle2" type="String" label="Second Accordion Title"
                 default="Second Accordion Heading" />
-            <property name="accordionTitle3" type="String" label="Third Accordion Title"
+            <property name="accordionTitle3" type="String"
+                label="Third Accordion Title"
                 default="" />
-            <property name="accordionTitle4" type="String" label="Fourth Accordion Title"
+            <property name="accordionTitle4" type="String"
+                label="Fourth Accordion Title"
                 default="" />
-            <property name="accordionTitle5" type="String" label="Fifth Accordion Title"
+            <property name="accordionTitle5" type="String"
+                label="Fifth Accordion Title"
                 default="" />
-            <property name="accordionTitle6" type="String" label="Sixth Accordion Title"
+            <property name="accordionTitle6" type="String"
+                label="Sixth Accordion Title"
                 default="" />
-            <property name="accordionTitle7" type="String" label="Seventh Accordion Title"
+            <property name="accordionTitle7" type="String"
+                label="Seventh Accordion Title"
                 default="" />
-            <property name="accordionTitle8" type="String" label="Eighth Accordion Title"
+            <property name="accordionTitle8" type="String"
+                label="Eighth Accordion Title"
                 default="" />
-            <property name="accordionTitle9" type="String" label="Ninth Accordion Title"
+            <property name="accordionTitle9" type="String"
+                label="Ninth Accordion Title"
                 default="" />
-            <property name="accordionTitle10" type="String" label="Tenth Accordion Title"
+            <property name="accordionTitle10" type="String"
+                label="Tenth Accordion Title"
                 default="" />
             <property name="accordionType" type="String" label="Accordion Type"
                 default="Borderless" datasource="Borderless, Bordered" />
-            <property name="allowMultipleSelectable" type="Boolean"
+            <property
+                name="allowMultipleSelectable" type="Boolean"
                 label="Allow Multiple Selectable" default="false" />
         </targetConfig>
     </targetConfigs>

@@ -17,6 +17,7 @@ export default class UswdsAccordionBuilder extends LightningElement {
   @api accordionTitle8 = "";
   @api accordionTitle9 = "";
   @api accordionTitle10 = "";
+  @api isExpanded1 = false;
 
   @api accordionType = "Borderless"; // Default"
   @api allowMultipleSelectable = false;
