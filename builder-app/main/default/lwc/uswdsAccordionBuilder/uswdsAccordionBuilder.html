@@ -1,0 +1,87 @@
+<template>
+  <c-uswds-accordion-container
+    accordion-type={accordionType}
+    allow-multiple-selectable={allowMultipleSelectable}
+  >
+    <template if:false={hideAccordion1}>
+      <c-uswds-accordion-section
+        header={accordionTitle1}
+        section-id="builder-section-1"
+      >
+        <slot name="section1Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion2}>
+      <c-uswds-accordion-section
+        header={accordionTitle2}
+        section-id="builder-section-2"
+      >
+        <slot name="section2Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion3}>
+      <c-uswds-accordion-section
+        header={accordionTitle3}
+        section-id="builder-section-3"
+      >
+        <slot name="section3Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion4}>
+      <c-uswds-accordion-section
+        header={accordionTitle4}
+        section-id="builder-section-4"
+      >
+        <slot name="section4Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion5}>
+      <c-uswds-accordion-section
+        header={accordionTitle5}
+        section-id="builder-section-5"
+      >
+        <slot name="section5Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion6}>
+      <c-uswds-accordion-section
+        header={accordionTitle6}
+        section-id="builder-section-6"
+      >
+        <slot name="section6Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion7}>
+      <c-uswds-accordion-section
+        header={accordionTitle7}
+        section-id="builder-section-7"
+      >
+        <slot name="section7Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion8}>
+      <c-uswds-accordion-section
+        header={accordionTitle8}
+        section-id="builder-section-8"
+      >
+        <slot name="section8Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion9}>
+      <c-uswds-accordion-section
+        header={accordionTitle9}
+        section-id="builder-section-9"
+      >
+        <slot name="section9Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+    <template if:false={hideAccordion10}>
+      <c-uswds-accordion-section
+        header={accordionTitle10}
+        section-id="builder-section-10"
+      >
+        <slot name="section10Content"></slot>
+      </c-uswds-accordion-section>
+    </template>
+  </c-uswds-accordion-container>
+</template>

@@ -3,10 +3,17 @@
     {
       "path": "force-app",
       "default": true
+    },
+    {
+      "path": "builder-app",
+      "default": false
     }
   ],
   "name": "uswds-lightning-community-theme",
   "namespace": "",
+  "plugins": {
+    "@salesforce/plugin-lightning-dev": "2.10.3"
+  },
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "59.0"
+  "sourceApiVersion": "62.0"
 }
