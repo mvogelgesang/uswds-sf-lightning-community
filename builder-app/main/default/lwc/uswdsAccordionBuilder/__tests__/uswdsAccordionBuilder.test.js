@@ -86,6 +86,7 @@ describe("c-uswds-accordion-builder", () => {
     expect(sections.length).toBe(2);
     expect(sections[0].header).toBe("First Section");
     expect(sections[1].header).toBe("Second Section");
+    await expect(element).toBeAccessible();
   });
 
   it("should not render sections with empty titles", async () => {
@@ -106,6 +107,7 @@ describe("c-uswds-accordion-builder", () => {
     );
     expect(sections.length).toBe(1);
     expect(sections[0].header).toBe("First Section");
+    await expect(element).toBeAccessible();
   });
 
   it("should apply the correct accordion type class", async () => {

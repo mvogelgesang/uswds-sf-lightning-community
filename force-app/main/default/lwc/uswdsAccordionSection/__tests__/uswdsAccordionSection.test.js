@@ -1,4 +1,5 @@
 import { createElement } from "@lwc/engine-dom";
+import { registerSa11yMatcher } from "@sa11y/jest";
 
 import UswdsAccordionSection from "c/uswdsAccordionSection";
 import UswdsAccordionContainer from "c/uswdsAccordionContainer";
@@ -11,7 +12,7 @@ describe("c-uswds-accordion-section", () => {
     }
   });
 
-  it("Displays the accordion section with default properties", () => {
+  it("Displays the accordion section with default properties", async () => {
     const element = createElement("c-uswds-accordion-section", {
       is: UswdsAccordionSection
     });
@@ -29,9 +30,10 @@ describe("c-uswds-accordion-section", () => {
 
     // Check default classes
     expect(header.className).toBe("usa-accordion__heading");
+    await expect(element).toBeAccessible();
   });
 
-  it("Displays the accordion section with custom properties", () => {
+  it("Displays the accordion section with custom properties", async () => {
     const element = createElement("c-uswds-accordion-section", {
       is: UswdsAccordionSection
     });
@@ -50,6 +52,7 @@ describe("c-uswds-accordion-section", () => {
 
     // Check custom classes
     expect(header.className).toBe("usa-accordion__heading add-margin-top");
+    await expect(element).toBeAccessible();
   });
 
   it("Toggles the accordion section visibility when toggle() is called", async () => {
@@ -89,6 +92,7 @@ describe("c-uswds-accordion-section", () => {
     );
     // hidden is not set, hence null
     expect(content.getAttribute("hidden")).toBe(null);
+    await expect(element).toBeAccessible();
 
     // Call toggle() to collapse
     container.dispatchEvent(toggleEvent);
@@ -98,6 +102,7 @@ describe("c-uswds-accordion-section", () => {
     expect(section1.isExpanded).toBe(false);
     // hidden lacks a value, hence ""
     expect(content.getAttribute("hidden")).toBe("");
+    await expect(element).toBeAccessible();
   });
 
   it("Fires a sectiontoggle event when the header is clicked", () => {
