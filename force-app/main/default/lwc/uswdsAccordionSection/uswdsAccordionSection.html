@@ -1,0 +1,20 @@
+<template>
+  <h2 class={headingClasses}>
+    <button
+      class="usa-accordion__button"
+      aria-expanded={isExpanded}
+      aria-controls={sectionId}
+      onclick={handleHeaderClick}
+    >
+      {header}
+    </button>
+  </h2>
+  <div
+    id={sectionId}
+    class="usa-accordion__content usa-prose"
+    hidden={isContentHidden}
+  >
+    <!-- This default slot is a placeholder for this section's content -->
+    <slot></slot>
+  </div>
+</template>

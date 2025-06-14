@@ -1,0 +1,11 @@
+<template>
+  <!-- The 'onsectiontoggle' listens for the event from the child sections -->
+  <div
+    class={containerClasses}
+    onsectiontoggle={handleSectionToggle}
+    data-allow-multiple={allowMultipleSelectable}
+  >
+    <!-- This default slot is where a developer would place multiple <c-uswds-accordion-section> components -->
+    <slot></slot>
+  </div>
+</template>
