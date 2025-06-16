@@ -7,6 +7,10 @@
     {
       "path": "builder-app",
       "default": false
+    },
+    {
+      "path": "lookbook-app",
+      "default": false
     }
   ],
   "name": "uswds-lightning-community-theme",

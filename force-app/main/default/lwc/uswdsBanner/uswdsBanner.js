@@ -40,13 +40,25 @@ export default class UswdsBanner extends LightningElement {
    * @description URLs for the images used in the banner.
    */
   imgDotGov = "";
+
+  /**
+   * @description Path to the HTTPS icon image
+   * @type {string}
+   * @private
+   */
   imgHttps = "";
+
+  /**
+   * @description Path to the US flag small icon image
+   * @type {string}
+   * @private
+   */
   imgUsFlagSmall = "";
 
   /**
-   * @private
+   * @description Object containing all the label strings used in the banner
    * @type {Object}
-   * @description Contains the labels used in the banner.
+   * @private
    */
   label = {
     uswdsBanner_headerText,
