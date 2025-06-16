@@ -9,6 +9,7 @@ We're so glad you're thinking about contributing to a U.S. Government open sourc
   - [Code Guidelines](#code-guidelines)
   - [Establishing a Development Environment](#establishing-a-development-environment)
   - [Creating a new Component](#creating-a-new-component)
+    - [Generating Component Documentation with JSDoc](#generating-component-documentation-with-jsdoc)
     - [Handling in-component validation \& builder feedback](#handling-in-component-validation--builder-feedback)
   - [Accessibility](#accessibility)
     - [Testing Accessibility](#testing-accessibility)
@@ -67,6 +68,17 @@ Using Salesforce [Scratch Orgs](https://help.salesforce.com/s/articleView?id=sf.
 Add the new component to the src/package.xml
 
 `sfdx force:source:manifest:create --sourcepath src --manifestname src/package.xml`
+
+### Generating Component Documentation with JSDoc
+
+
+When you prompt your LLM to generate or update LWC code with JSDoc, reference `prompts/jsdoc_conventions.md` content in your prompt or refer to it (if the LLM supports multi-file context). For example:
+
+**Your Prompt to A4D/Gemini/Cursor:**
+
+> Using the following JSDoc conventions, generate jsdoc comments for `myNewComponent.js` while following the conventions outlined in `prompts/jsdoc_conventions.md`
+
+By providing this detailed, example-driven reference, the LLM will have a very clear and explicit guide on how to format the JSDoc, including your specific `@alias` requirement for classes, ensuring consistent and high-quality documentation output.
 
 ### Handling in-component validation & builder feedback
 
