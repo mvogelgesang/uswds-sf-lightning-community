@@ -15,12 +15,39 @@ import uswdsBanner_secureContentEnd_gov from "@salesforce/label/c.uswdsBanner_se
 import uswdsBanner_secureContentEnd_mil from "@salesforce/label/c.uswdsBanner_secureContentEnd_mil";
 import USWDS_ASSETS from "@salesforce/resourceUrl/uswds_assets"; // Name of your static resource
 
+/**
+ * @class
+ * @alias uswds-banner
+ * @description A Lightning Web Component (LWC) for displaying a USWDS (* States Web Design System) banner.
+ *              The banner includes header text, action buttons, and secure connection indicators.
+ *              It supports both civilian and military banner types and allows toggling the banner content visibility.
+ * @extends LightningElement
+ * @author Mark Vogelgesang <movogelgesang@gmail.com>
+ * @since 1.0.0
+ */
 export default class UswdsBanner extends LightningElement {
+  /**
+   * @api
+   * @type {string}
+   * @default "Civilian"
+   * @description Specifies the type of the banner to display. Can be "Civilian" or "Military".
+   */
   @api bannerType = "Civilian";
+
+  /**
+   * @private
+   * @type {string}
+   * @description URLs for the images used in the banner.
+   */
   imgDotGov = "";
   imgHttps = "";
   imgUsFlagSmall = "";
 
+  /**
+   * @private
+   * @type {Object}
+   * @description Contains the labels used in the banner.
+   */
   label = {
     uswdsBanner_headerText,
     uswdsBanner_headerAction,
@@ -36,6 +63,12 @@ export default class UswdsBanner extends LightningElement {
     uswdsBanner_secureContentEnd_gov,
     uswdsBanner_secureContentEnd_mil
   };
+
+  /**
+   * @lifecycle
+   * @description Lifecycle hook that runs when the component is inserted into the DOM.
+   *              Loads the necessary CSS styles and sets the appropriate banner labels based on the banner type.
+   */
   connectedCallback() {
     Promise.all([loadStyle(this, USWDS_ASSETS + "/css/theme.min.css")]).then(
       () => {
@@ -60,6 +93,13 @@ export default class UswdsBanner extends LightningElement {
     }
   }
 
+  /**
+   * @method
+   * @param {Event} event - The event object from the button click.
+   * @description Toggles the visibility of the banner content.
+   *              If the content is hidden, it will be shown, and vice versa.
+   *              Updates the `aria-expanded` attribute of the toggle button accordingly.
+   */
   toggleBanner(event) {
     if (this.refs.bannerContent.hasAttribute("hidden")) {
       this.refs.bannerContent.removeAttribute("hidden");
