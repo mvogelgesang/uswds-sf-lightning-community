@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: lwc/uswdsBanner/uswdsBanner.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: lwc/uswdsBanner/uswdsBanner.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { LightningElement, api } from "lwc";
+import { loadStyle } from "lightning/platformResourceLoader";
+import uswdsBanner_headerText from "@salesforce/label/c.uswdsBanner_headerText";
+import uswdsBanner_headerAction from "@salesforce/label/c.uswdsBanner_headerAction";
+import uswdsBanner_lock from "@salesforce/label/c.uswdsBanner_lock";
+import uswdsBanner_lockedPadlockIcon from "@salesforce/label/c.uswdsBanner_lockedPadlockIcon";
+import uswdsBanner_officialTop_gov from "@salesforce/label/c.uswdsBanner_officialTop_gov";
+import uswdsBanner_officialTop_mil from "@salesforce/label/c.uswdsBanner_officialTop_mil";
+import uswdsBanner_officialContent_gov from "@salesforce/label/c.uswdsBanner_officialContent_gov";
+import uswdsBanner_officialContent_mil from "@salesforce/label/c.uswdsBanner_officialContent_mil";
+import uswdsBanner_secureTop_gov from "@salesforce/label/c.uswdsBanner_secureTop_gov";
+import uswdsBanner_secureTop_mil from "@salesforce/label/c.uswdsBanner_secureTop_mil";
+import uswdsBanner_secureContentStart from "@salesforce/label/c.uswdsBanner_secureContentStart";
+import uswdsBanner_secureContentEnd_gov from "@salesforce/label/c.uswdsBanner_secureContentEnd_gov";
+import uswdsBanner_secureContentEnd_mil from "@salesforce/label/c.uswdsBanner_secureContentEnd_mil";
+import USWDS_ASSETS from "@salesforce/resourceUrl/uswds_assets"; // Name of your static resource
+
+/**
+ * @class
+ * @alias uswds-banner
+ * @description A Lightning Web Component (LWC) for displaying a USWDS (* States Web Design System) banner.
+ *              The banner includes header text, action buttons, and secure connection indicators.
+ *              It supports both civilian and military banner types and allows toggling the banner content visibility.
+ * @extends LightningElement
+ * @author Mark Vogelgesang &lt;movogelgesang@gmail.com>
+ * @since 1.0.0
+ */
+export default class UswdsBanner extends LightningElement {
+  /**
+   * @api
+   * @type {string}
+   * @default "Civilian"
+   * @description Specifies the type of the banner to display. Can be "Civilian" or "Military".
+   */
+  @api bannerType = "Civilian";
+
+  /**
+   * @private
+   * @type {string}
+   * @description URLs for the images used in the banner.
+   */
+  imgDotGov = "";
+  imgHttps = "";
+  imgUsFlagSmall = "";
+
+  /**
+   * @private
+   * @type {Object}
+   * @description Contains the labels used in the banner.
+   */
+  label = {
+    uswdsBanner_headerText,
+    uswdsBanner_headerAction,
+    uswdsBanner_lock,
+    uswdsBanner_lockedPadlockIcon,
+    uswdsBanner_officialTop_gov,
+    uswdsBanner_officialTop_mil,
+    uswdsBanner_officialContent_gov,
+    uswdsBanner_officialContent_mil,
+    uswdsBanner_secureTop_gov,
+    uswdsBanner_secureTop_mil,
+    uswdsBanner_secureContentStart,
+    uswdsBanner_secureContentEnd_gov,
+    uswdsBanner_secureContentEnd_mil
+  };
+
+  /**
+   * @lifecycle
+   * @description Lifecycle hook that runs when the component is inserted into the DOM.
+   *              Loads the necessary CSS styles and sets the appropriate banner labels based on the banner type.
+   */
+  connectedCallback() {
+    Promise.all([loadStyle(this, USWDS_ASSETS + "/css/theme.min.css")]).then(
+      () => {
+        this.imgDotGov = USWDS_ASSETS + "/img/icon-dot-gov.svg";
+        this.imgHttps = USWDS_ASSETS + "/img/icon-https.svg";
+        this.imgUsFlagSmall = USWDS_ASSETS + "/img/us_flag_small.png";
+      }
+    );
+    if (this.bannerType.toLowerCase() === "military") {
+      this.label.uswdsBanner_officialTop = uswdsBanner_officialTop_mil;
+      this.label.uswdsBanner_officialContent = uswdsBanner_officialContent_mil;
+      this.label.uswdsBanner_secureTop = uswdsBanner_secureTop_mil;
+      this.label.uswdsBanner_secureContentEnd =
+        uswdsBanner_secureContentEnd_mil;
+    } else {
+      // default to civilian
+      this.label.uswdsBanner_officialTop = uswdsBanner_officialTop_gov;
+      this.label.uswdsBanner_officialContent = uswdsBanner_officialContent_gov;
+      this.label.uswdsBanner_secureTop = uswdsBanner_secureTop_gov;
+      this.label.uswdsBanner_secureContentEnd =
+        uswdsBanner_secureContentEnd_gov;
+    }
+  }
+
+  /**
+   * @method
+   * @param {Event} event - The event object from the button click.
+   * @description Toggles the visibility of the banner content.
+   *              If the content is hidden, it will be shown, and vice versa.
+   *              Updates the `aria-expanded` attribute of the toggle button accordingly.
+   */
+  toggleBanner(event) {
+    if (this.refs.bannerContent.hasAttribute("hidden")) {
+      this.refs.bannerContent.removeAttribute("hidden");
+      this.refs.bannerButton.setAttribute("aria-expanded", true);
+    } else {
+      this.refs.bannerContent.setAttribute("hidden", "hidden");
+      this.refs.bannerButton.setAttribute("aria-expanded", false);
+    }
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="uswds-accordion-container.html">uswds-accordion-container</a></li><li><a href="uswds-accordion-section.html">uswds-accordion-section</a></li><li><a href="uswds-banner.html">uswds-banner</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:handleSectionToggle">handleSectionToggle</a></li></ul><h3>Global</h3><ul><li><a href="global.html#connectedCallback">connectedCallback</a></li><li><a href="global.html#containerClasses">containerClasses</a></li><li><a href="global.html#handleHeaderClick">handleHeaderClick</a></li><li><a href="global.html#headingClasses">headingClasses</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#isContentHidden">isContentHidden</a></li><li><a href="global.html#renderedCallback">renderedCallback</a></li><li><a href="global.html#toggle">toggle</a></li><li><a href="global.html#toggleBanner">toggleBanner</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Jun 16 2025 20:52:10 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
