@@ -62,7 +62,6 @@ typings/
 
 # builds
 /dist
-/docs
 
 # swap files
 *.swm
