@@ -1,11 +1,10 @@
-# LWC JSDoc Conventions for USWDS SF Lightning Community
+# Rule: LWC JSDoc
 
-This document outlines the standard JSDoc conventions to be used for all Lightning Web Components (LWC) within this project. Adhering to these conventions ensures consistent, readable, and maintainable documentation, and aids in automated documentation generation and LLM assistance.
+**Description:** Ensure JSDoc-style comments are used throughout all LWC js files
 
----
+**Applies to:** `**/*.js` .
 
-## General Principles
-
+**Guidelines:**
 * **Be Comprehensive:** Document all `@api` properties, public methods, private helper methods, and custom events.
 * **Be Clear & Concise:** Descriptions should be easy to understand and to the point.
 * **Be Accurate:** JSDoc types (`@type`) and default values (`@default`) must match the actual code.
@@ -49,7 +48,6 @@ Every LWC's main JavaScript file (`.js`) should start with a JSDoc block describ
 Every `@api` property must have its own JSDoc block immediately preceding it.
 
 * **Required Tags:**
-    * `@api` (Indicates it's a public API property.)
     * `@type {<JavaScript Type>}` (e.g., `string`, `boolean`, `number`, `object`, `Array<string>`, `('option1'|'option2')` for enums.)
     * `@default <Default Value>` (Must match the code's default value.)
     * `@description` (Clear explanation of what the property does.)
@@ -61,7 +59,6 @@ Every `@api` property must have its own JSDoc block immediately preceding it.
     // ... (inside MyGenericButton class) ...
 
     /**
-     * @api
      * @type {string}
      * @default ''
      * @description Additional CSS classes to apply directly to the button element.
@@ -70,7 +67,6 @@ Every `@api` property must have its own JSDoc block immediately preceding it.
     @api buttonClass = "";
 
     /**
-     * @api
      * @type {string}
      * @default 'button'
      * @description The text displayed on the button.
@@ -78,17 +74,12 @@ Every `@api` property must have its own JSDoc block immediately preceding it.
     @api label = "button";
 
     /**
-     * @api
-     * @type {('default'|'primary'|'secondary'|'destructive'|'outline'|'ghost'|'link')}
+     * @type {('default'||'secondary'|'destructive'|'outline'|'ghost'|'link')}
      * @default 'default'
      * @description The visual styling variant of the button.
      * - 'default': Standard button styling.
-     * - 'primary': Emphasized primary action button.
      * - 'secondary': Less emphasized secondary action button.
-     * - 'destructive': Button for destructive actions (e.g., delete).
      * - 'outline': Button with only a border and transparent background.
-     * - 'ghost': Button with transparent background and colored text/icon on hover.
-     * - 'link': Button styled as a link.
      */
     @api variant = "default";
 
@@ -103,12 +94,13 @@ Both public and private methods should be documented. Private methods usually st
 
 * **Required Tags:**
     * `@description`
+    * `@private` (for private methods)
     * `@param {<Type>} <name> - <Description>` (for each parameter)
     * `@returns {<Type>} - <Description>` (if the method returns a value)
 
 * **Examples:**
 
-    ```javascript
+```javascript
     // ... (inside MyGenericButton class) ...
 
     /**
@@ -124,7 +116,21 @@ Both public and private methods should be documented. Private methods usually st
      * @private
      */
     _dispatchButtonAction() { /* ... */ }
-    ```
+
+    /**
+   * @method toggle
+   * @memberof <className>
+   * @description Public method to toggle the expanded state of the accordion section.
+   *              If an argument is provided, it sets the expanded state to that value.
+   *              Otherwise, it toggles the current state.
+   *
+   * @param {boolean} [expand] - Optional. The desired expanded state.
+   * @returns {void}
+   * @public
+   */
+   @api
+   toggle(expand) { /* ... */ }
+```
 
 ---
 
