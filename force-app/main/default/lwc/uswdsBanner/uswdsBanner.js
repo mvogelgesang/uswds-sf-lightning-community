@@ -18,6 +18,7 @@ import USWDS_ASSETS from "@salesforce/resourceUrl/uswds_assets"; // Name of your
 /**
  * @class
  * @alias uswds-banner
+ * @hideconstructor
  * @description A Lightning Web Component (LWC) for displaying a USWDS (* States Web Design System) banner.
  *              The banner includes header text, action buttons, and secure connection indicators.
  *              It supports both civilian and military banner types and allows toggling the banner content visibility.
@@ -27,7 +28,6 @@ import USWDS_ASSETS from "@salesforce/resourceUrl/uswds_assets"; // Name of your
  */
 export default class UswdsBanner extends LightningElement {
   /**
-   * @api
    * @type {string}
    * @default "Civilian"
    * @description Specifies the type of the banner to display. Can be "Civilian" or "Military".
@@ -66,6 +66,7 @@ export default class UswdsBanner extends LightningElement {
 
   /**
    * @lifecycle
+   * @private
    * @description Lifecycle hook that runs when the component is inserted into the DOM.
    *              Loads the necessary CSS styles and sets the appropriate banner labels based on the banner type.
    */
@@ -95,6 +96,7 @@ export default class UswdsBanner extends LightningElement {
 
   /**
    * @method
+   * @private
    * @param {Event} event - The event object from the button click.
    * @description Toggles the visibility of the banner content.
    *              If the content is hidden, it will be shown, and vice versa.

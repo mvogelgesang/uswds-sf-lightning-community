@@ -3,6 +3,7 @@ import { LightningElement, api } from "lwc";
 /**
  * @class
  * @alias uswds-accordion-section
+ * @hideconstructor
  * @description A section within an accordion component, managing its expanded state and content visibility.
  * @extends LightningElement
  * @author Mark Vogelgesang <movogelgesang@gmail.com>
@@ -10,20 +11,18 @@ import { LightningElement, api } from "lwc";
  */
 export default class UswdsAccordionSection extends LightningElement {
   /**
-   * @api
    * @type {string}
    * @description The header text displayed for this accordion section.
    */
   @api header;
+
   /**
-   * @api
    * @type {string}
    * @description A unique identifier for this accordion section.
    */
   @api sectionId;
 
   /**
-   * @api
    * @type {boolean}
    * @default false
    * @description Determines if the section should have a top margin applied.
@@ -31,7 +30,6 @@ export default class UswdsAccordionSection extends LightningElement {
   @api applyTopMargin = false;
 
   /**
-   * @api
    * @type {boolean}
    * @default false
    * @description Indicates whether the section is currently expanded.
@@ -39,10 +37,10 @@ export default class UswdsAccordionSection extends LightningElement {
   @api isExpanded = false;
 
   /**
-   * Getter method to dynamically build the class string for the accordion heading.
-   * Adds a margin class if the `applyTopMargin` property is true.
-   *
-   * @return {string} - The class string for the accordion heading.
+   * @private
+   * @description Getter method to dynamically build the class string for the accordion heading.
+   *              Adds a margin class if the `applyTopMargin` property is true.
+   * @returns {string} - The class string for the accordion heading.
    */
   get headingClasses() {
     // Start with the base class
@@ -55,31 +53,43 @@ export default class UswdsAccordionSection extends LightningElement {
 
     return classes;
   }
+
   /**
-   * Getter method to determine if the accordion content should be hidden.
-   * Returns true if the accordion section is not expanded.
-   *
-   * @return {boolean} - True if the content should be hidden, false otherwise.
+   * @private
+   * @type {boolean}
+   * @description Getter method to determine if the accordion content should be hidden.
+   *              Returns true if the accordion section is not expanded.
+   * @returns {boolean} - True if the content should be hidden, false otherwise.
    */
   get isContentHidden() {
     return !this.isExpanded;
   }
 
   /**
-   * Public method to toggle the expanded state of the accordion section.
-   * If an argument is provided, it sets the expanded state to that value.
-   * Otherwise, it toggles the current state.
+   * @method toggle
+   * @memberof UswdsAccordionSection
+   * @description Public method to toggle the expanded state of the accordion section.
+   *              If an argument is provided, it sets the expanded state to that value.
+   *              Otherwise, it toggles the current state.
    *
-   * @param {boolean} expand - Optional. The desired expanded state.
-   */ @api
+   * @param {boolean} [expand] - Optional. The desired expanded state.
+   * @returns {void}
+   * @public
+   */
+  @api
   toggle(expand) {
     this.isExpanded = typeof expand === "boolean" ? expand : !this.isExpanded;
   }
 
   /**
-   * Handles the click event on the accordion header.
-   * Dispatches a custom event `sectiontoggle` with details about the section's state.
-   */ handleHeaderClick() {
+   * @method
+   * @private
+   *
+   * @description Handles the click event on the accordion header.
+   *              Dispatches a custom event `sectiontoggle` with details about the section's state.
+   * @returns {void}
+   */
+  handleHeaderClick() {
     const customEvent = new CustomEvent("sectiontoggle", {
       bubbles: true,
       composed: true,
