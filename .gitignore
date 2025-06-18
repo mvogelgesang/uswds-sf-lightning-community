@@ -81,7 +81,8 @@ build.xml
 retrieveUnpackaged/
 retrieveUnpackagedstatic/
 static/
-.sfdx
+/.sfdx/*
+!/.sfdx/a4d/
 .sf/
 unpackaged/
 
