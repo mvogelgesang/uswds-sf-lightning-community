@@ -2,6 +2,7 @@ import { LightningElement, api } from "lwc";
 /**
  * @class
  * @alias uswds-accordion-container
+ * @hideconstructor
  * @description A container component for managing multiple accordion sections.
  *              Handles the expansion and collapse of sections, and applies styles dynamically.
  * @extends LightningElement
@@ -10,7 +11,6 @@ import { LightningElement, api } from "lwc";
  */
 export default class UswdsAccordionContainer extends LightningElement {
   /**
-   * @api
    * @type {string}
    * @default ""
    * @description Custom CSS class to be applied to the container.
@@ -18,7 +18,6 @@ export default class UswdsAccordionContainer extends LightningElement {
   @api customClass = "";
 
   /**
-   * @api
    * @type {boolean}
    * @default false
    * @description Determines if multiple sections can be open simultaneously.
@@ -26,7 +25,6 @@ export default class UswdsAccordionContainer extends LightningElement {
   @api allowMultipleSelectable = false;
 
   /**
-   * @api
    * @type {string}
    * @default "Borderless"
    * @description Determines the styling type of the accordion (e.g., "Borderless" or "Bordered").
@@ -43,6 +41,7 @@ export default class UswdsAccordionContainer extends LightningElement {
 
   /**
    * @lifecycle
+   * @private
    * @description Runs after the component has been inserted into the DOM.
    *              Adds a top margin to all child sections except the first one.
    */
@@ -66,6 +65,7 @@ export default class UswdsAccordionContainer extends LightningElement {
   }
   /**
    * @event
+   * @private
    * @param {CustomEvent} event - The event object containing details of the toggled section.
    * @description Handles the toggle event of a section.
    *              Toggles the clicked section and closes others if multiple selection is not allowed.
@@ -90,9 +90,9 @@ export default class UswdsAccordionContainer extends LightningElement {
   }
 
   /**
-   * @getter
-   * @return {string} - The class string for the container element.
+   * @private
    * @description Dynamically generates the class string for the container based on properties.
+   * @returns {string} - The class string for the container element.
    */
   get containerClasses() {
     return (
