@@ -2,38 +2,50 @@ import { LightningElement, api } from "lwc";
 import { loadStyle, loadScript } from "lightning/platformResourceLoader";
 import USWDS_ASSETS from "@salesforce/resourceUrl/uswds_assets"; // Name of your static resource
 
+/**
+ * @description A generic button component that can be customized with a label, variant, and size.
+ * It supports different variants like 'primary', 'secondary', 'outline', and 'inverse'.
+ * The size can be toggled between default and large. The component also supports icon integration
+ * and emits a custom event when clicked.
+ * @example
+ * // Usage in an LWC template:
+ * <c-uswds-button
+ *   label="Cancel"
+ *   variant="outline"
+ *   onbuttonaction={handleButtonClick}>
+ * </c-uswds-button>
+ */
 export default class UswdsButton extends LightningElement {
   /**
-   * @api
    * @type {string}
    * @default ''
    * @description Additional CSS classes to apply directly to the button element.
    * Allows for custom styling beyond predefined variants.
    */
   @api buttonClass = "";
+
   /**
-   * @api
    * @type {string}
    * @default 'Button'
    * @description The text displayed on the button.
    */
   @api label = "button";
+
   /**
-   * @api
-   * @type {('default'|'secondary'|'accent cool'|'accent warm'|'base')}
+   * @type {('default'|'secondary'|'accent cool'|'accent warm'|'outline'|'base'|'unstyled')}
    * @default 'default'
    * @description The visual styling variant of the button.
    * - 'default': Standard button styling.
-   * - 'primary': Emphasized primary action button.
-   * - 'secondary': Less emphasized secondary action button.
-   * - 'destructive': Button for destructive actions (e.g., delete).
-   * - 'outline': Button with only a border and transparent background.
-   * - 'ghost': Button with transparent background and colored text/icon on hover.
-   * - 'link': Button styled as a link.
+   * - 'secondary': Used for destructive actions.
+   * - 'accent cool': Button for related actions but not primary functions of a page (e.g. info box/ help).
+   * - 'accent warm': Button for related actions but not primary functions of a page (e.g. info box/ help).
+   * - 'outline': Used for secondary actions such as cancelling a form or going back. Button with only a border and transparent background.
+   * - 'base': Button with grey/muted background.
+   * - 'unstyled': No styling.
    */
   @api variant = "default";
+
   /**
-   * @api
    * @type {('button'|'submit'|'reset')}
    * @default 'button'
    * @description The HTML `type` attribute for the button.
@@ -42,8 +54,8 @@ export default class UswdsButton extends LightningElement {
    * - 'reset': A button that resets the form fields.
    */
   @api type = "button";
+
   /**
-   * @api
    * @type {boolean}
    * @default false
    * @description If `true`, the native HTML `disabled` attribute is applied,
@@ -52,7 +64,6 @@ export default class UswdsButton extends LightningElement {
    */
   @api isDisabled = false;
   /**
-   * @api
    * @type {boolean}
    * @default false
    * @description If `true`, the `aria-disabled="true"` ARIA attribute is applied.
@@ -64,35 +75,14 @@ export default class UswdsButton extends LightningElement {
   @api isAriaDisabled = false;
 
   /**
-   * @api
-   * @type {boolean}
-   * @default false
-   * @description If `true`, applies outline styling to the button (e.g., no fill, only border).
-   * Specific classes will depend on the variant.
-   */
-  @api isOutline = false;
-
-  /**
-   * @api
    * @type {boolean}
    * @default false
    * @description If `true`, applies inverse styling to the button,
-   * suitable for use on dark backgrounds.
+   * suitable for use on dark backgrounds. Only applicable on buttons of the outline variant.
    */
   @api isInverse = false;
 
   /**
-   * @api
-   * @type {boolean}
-   * @default false
-   * @description If `true`, removes all default button styling,
-   * rendering it as a plain text element that still retains button functionality.
-   * Useful for highly custom visual buttons.
-   */
-  @api isUnstyled = false;
-
-  /**
-   * @api
    * @type {boolean}
    * @default false
    * @description If `true`, renders the button with a larger size.
@@ -147,6 +137,11 @@ export default class UswdsButton extends LightningElement {
     );
   }
 
+  /**
+   * @description Handles the button click event.
+   * If the button is not disabled, it dispatches a custom event.
+   * @param {Event} event - The click event.
+   */
   handleClick(event) {
     // Check the LWC component's internal property for disabled state
     if (this.isButtonDisabled) {
@@ -160,7 +155,12 @@ export default class UswdsButton extends LightningElement {
     this._dispatchButtonEvent();
   }
 
-  // Handle keyboard events (e.g., Enter or Space key for activation)
+  /**
+   * @description Handles keyboard events for the button.
+   * If the button is not disabled and the Enter or Space key is pressed,
+   * it dispatches a custom event.
+   * @param {KeyboardEvent} event - The keyboard event.
+   */
   handleKeyDown(event) {
     if (this.isButtonDisabled) {
       if (event.key === "Enter" || event.key === " ") {
@@ -175,6 +175,12 @@ export default class UswdsButton extends LightningElement {
       this._dispatchButtonEvent();
     }
   }
+
+  /**
+   * @description Determines the CSS classes to apply based on the button's variant.
+   * @private
+   * @returns {string} - A string of CSS classes corresponding to the variant.
+   */
   get variantClasses() {
     switch (this.variant) {
       case "secondary":
@@ -185,23 +191,40 @@ export default class UswdsButton extends LightningElement {
         return "usa-button--accent-warm";
       case "base":
         return "usa-button--base";
+      case "unstyled":
+        return "usa-button--unstyled";
+      case "outline":
+        return "usa-button--outline";
       default: {
         return "";
       }
     }
   }
 
+  /**
+   * @description Generates the full list of CSS classes to apply to the button.
+   * Combines the base class, variant-specific classes, and optional classes
+   * for outline, inverse, unstyled, and large size variants.
+   * @private
+   * @returns {string[]} - An array of CSS class names.
+   */
   get buttonClasses() {
     return [
       "usa-button",
       this.buttonClass,
       this.variantClasses,
-      this.isOutline ? "usa-button--outline" : "",
       this.isInverse ? "usa-button--inverse" : "",
-      this.isUnstyled ? "usa-button--unstyled" : "",
       this.isBig ? "usa-button--big" : ""
     ];
   }
+
+  /**
+   * @description Determines if the button should be considered disabled.
+   * A button is considered disabled if either the `isDisabled` or `isAriaDisabled`
+   * property is true.
+   * @private
+   * @returns {boolean} - True if the button is disabled, false otherwise.
+   */
   get isButtonDisabled() {
     return this.isDisabled || this.isAriaDisabled;
   }
