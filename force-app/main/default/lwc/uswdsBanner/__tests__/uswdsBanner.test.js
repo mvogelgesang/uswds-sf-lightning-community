@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import UswdsBanner from "c/uswdsBanner";
 import uswdsBanner_officialTop_gov from "@salesforce/label/c.uswdsBanner_officialTop_gov";
 import uswdsBanner_officialTop_mil from "@salesforce/label/c.uswdsBanner_officialTop_mil";
