@@ -30,6 +30,7 @@
   "scripts": {
     "build": "node ./scripts/build-uswds.js",
     "build:watch": "node ./scripts/build-uswds.js --watch",
+    "deploy": "sf project deploy start -d force-app -w 10 && sf project deploy start -d builder-app -w 10  && sf project deploy start -d lookbook-app -w 10 ",
     "jsdoc": "rm -rf docs && jsdoc -c jsdoc.config.json",
     "lint": "eslint .",
     "org:create": "sf org create scratch -f config/scratch-def.json -a $(date '+%Y%m%d')_$(git branch --show-current) -w 10 -y 30 && sf config set target-org=$(date '+%Y%m%d')_$(git branch --show-current)",
