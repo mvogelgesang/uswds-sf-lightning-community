@@ -1,0 +1,49 @@
+<template>
+  <div class="slds-theme_default">
+    <h2 class="font-serif-2xl">Icons</h2>
+    <div role="region" aria-atomic="true">
+      <label for="icon-filter">Type to filter icons</label>
+      <input class="usa-input" id="icon-filter" onkeyup={searchIcons} />
+      <p class="text-base" aria-live="polite">
+        {iconCount}. Click an icon to copy its code snippet. Copy only works
+        with LWS enabled.
+      </p>
+    </div>
+    <div class="display-flex flex-wrap margin-top-5">
+      <template for:each={iconList} for:item="icon">
+        <div
+          key={icon.name}
+          role="region"
+          aria-atomic="true"
+          class="font-sans-xl position-relative icon-example border-1px border-base-lighter hover:text-white hover:bg-primary-vivid hover:border-primary-darker"
+        >
+          <button
+            type="button"
+            onclick={copyIconName}
+            data-icon={icon.name}
+            class="bg-transparent cursor-pointer text-no-underline text-black display-flex width-card height-card flex-align-center flex-align-center border-0 flex-column flex-justify-center padding-2 hover:text-white"
+            aria-label="Copy icon to clipboard"
+            style="
+              -webkit-user-select: text;
+              -moz-user-select: text;
+              -ms-user-select: text;
+              user-select: text;
+            "
+          >
+            <template lwc:if={icon.isCopied}>
+              <span class="font-sans-xs bg-accent-cool-lighter">Copied!</span>
+            </template>
+            <template lwc:else>
+              <c-uswds-icon icon-name={icon.name}></c-uswds-icon>
+              <span
+                class="font-sans-3xs margin-top-2 display-block"
+                aria-hidden="true"
+                >{icon.name}</span
+              >
+            </template>
+          </button>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
