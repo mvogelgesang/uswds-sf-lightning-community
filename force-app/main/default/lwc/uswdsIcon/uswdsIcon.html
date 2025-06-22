@@ -1,0 +1,17 @@
+<template>
+  <template if:true={isSpriteIcon}>
+    <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+      <use href={spriteIconHref}></use>
+    </svg>
+  </template>
+  <template if:false={isSpriteIcon}>
+    <img
+      if:true={standaloneIconSrc}
+      class="usa-icon"
+      src={standaloneIconSrc}
+      aria-hidden="true"
+      role="img"
+      alt=""
+    />
+  </template>
+</template>
