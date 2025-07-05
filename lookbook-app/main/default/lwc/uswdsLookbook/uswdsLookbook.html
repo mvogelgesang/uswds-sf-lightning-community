@@ -1,0 +1,31 @@
+<template>
+  <div class="bg-base-lightest">
+    <div class="grid-row grid-gap padding-2">
+      <div class="tablet:grid-col-3 radius-md padding-2">
+        <h3 class="font-serif-xl padding-bottom-2">Components</h3>
+        <c-uswds-side-navigation
+          navigation-items={navItems}
+          initial-nav-id={currentView}
+          onnavigate={handleNavigation}
+        >
+        </c-uswds-side-navigation>
+      </div>
+
+      <div
+        class="tablet:grid-col-9 bg-white border border-base-dark radius-md padding-2"
+      >
+        <div class="content">
+          <template lwc:if={isButtonPreview}>
+            <c-button-preview></c-button-preview>
+          </template>
+          <template lwc:if={isIconPreview}>
+            <c-icon-preview></c-icon-preview>
+          </template>
+          <template lwc:if={isSideNavigationPreview}>
+            <c-side-navigation-preview></c-side-navigation-preview>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
