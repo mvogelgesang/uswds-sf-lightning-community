@@ -1,0 +1,30 @@
+<template>
+  <div class="margin-bottom-4 tablet:margin-bottom-0">
+    <nav aria-label={navigationLabel}>
+      <ul class="usa-sidenav">
+        <template
+          for:each={navigationItemsComputed}
+          for:item="item"
+          for:index="index"
+        >
+          <li key={item.label} class={item.className}>
+            <a href="#" data-id={item.id} onclick={handleSelect}
+              >{item.label}</a
+            >
+            <template lwc:if={item.hasSubMenu}>
+              <ul class="usa-sidenav__sublist">
+                <template for:each={item.subMenuItems} for:item="subMenuItem">
+                  <li key={subMenuItem.label} class={item.className}>
+                    <a href="#" data-id={subMenuItem.id} onclick={handleSelect}
+                      >{subMenuItem.label}</a
+                    >
+                  </li>
+                </template>
+              </ul>
+            </template>
+          </li>
+        </template>
+      </ul>
+    </nav>
+  </div>
+</template>
