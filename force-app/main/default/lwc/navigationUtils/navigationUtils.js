@@ -1,10 +1,20 @@
 /**
- * @description A centralized navigation service for LWC.
- * This service abstracts the complexity of the NavigationMixin's PageReference
- * objects into a simpler, action-based API.
+
+ * @description A centralized navigation service for LWC that abstracts the complexity of the NavigationMixin's PageReference
+ * objects into a simpler, action-based API. Supports internal links, external links, events, and custom component swapping.
+ * @author Mark Vogelgesang <movogelgesang@gmail.com>
+ * @since 1.0.0
  */
 import { NavigationMixin } from "lightning/navigation";
 
+/**
+ * @description Action types supported by the navigation service.
+ * @type {Object}
+ * @property {string} InternalLink - Navigation to internal pages within the application
+ * @property {string} Event - Navigation to login/logout or other system events
+ * @property {string} ExternalLink - Navigation to external URLs
+ * @property {string} ComponentSwap - Custom action for swapping components without page navigation
+ */
 export const ActionTypes = {
   InternalLink: "InternalLink",
   Event: "Event",
@@ -13,7 +23,11 @@ export const ActionTypes = {
   ComponentSwap: "ComponentSwap"
 };
 
-// Mapping of action values to their corresponding page reference configurations
+/**
+ * @description Mapping of event action values to their corresponding page reference configurations.
+ * @type {Object}
+ * @private
+ */
 const eventActionMappings = {
   "selfService:doLogin": {
     type: "comm_loginPage",
@@ -33,6 +47,11 @@ const eventActionMappings = {
   }
 };
 
+/**
+ * @description Page reference builders for different action types.
+ * @type {Object}
+ * @private
+ */
 const pageRefBuilders = {
   [ActionTypes.InternalLink]: (actionValue) => ({
     type: "standard__webPage",
@@ -52,7 +71,6 @@ const pageRefBuilders = {
       return eventActionMappings[actionValue];
     }
 
-    // Fallback to default login behavior for unknown action values
     console.warn(
       `NavigationUtils: Unknown event action value "${actionValue}".`
     );
@@ -60,17 +78,45 @@ const pageRefBuilders = {
 };
 
 /**
- * Performs navigation based on a simplified request object.
- * @param {object} componentContext - The `this` context from the calling LWC, required for NavigationMixin.
- * @param {object} navigationRequest - An object describing the desired navigation.
- * @param {string} navigationRequest.actionType - The type of navigation to perform (e.g., ActionTypes.VIEW_RECORD).
- * @param {object} navigationRequest.params - A payload of parameters needed for the navigation (e.g., { recordId: '...' }).
+ * @description Performs navigation based on a simplified request object.
+ * Handles different action types including internal links, external links, events, and custom component swapping.
+ * For component swaps, dispatches a custom event that bubbles up to parent components.
+ * For other action types, uses the NavigationMixin to perform standard navigation.
+ * @param {Object} componentContext - The `this` context from the calling LWC, required for NavigationMixin.
+ * @param {Object} navigationRequest - An object describing the desired navigation.
+ * @param {string} navigationRequest.actionType - The type of navigation to perform (e.g., ActionTypes.InternalLink).
+ * @param {string} navigationRequest.actionValue - The value associated with the action (e.g., URL for links).
+ * @param {string} navigationRequest.id - The unique identifier for the navigation item.
+ * @param {Object} [navigationRequest.params] - Optional parameters for the navigation request.
+ * @returns {void}
+ * @private
  */
 const navigate = (componentContext, navigationRequest) => {
   const { actionType, actionValue, id } = navigationRequest;
 
   // Handle non-NavigationMixin actions first, like swapping components.
   if (actionType === ActionTypes.ComponentSwap) {
+    /**
+     * @event navigate
+     * @description Fired when a component swap action is requested.
+     * The parent component can use this event to handle component swapping logic.
+     * @param {Object} detail - The event payload.
+     * @param {string} detail.actionType - The type of action (ComponentSwap).
+     * @param {string} detail.actionValue - The action value.
+     * @param {string} detail.id - The unique identifier for the navigation item.
+     * @param {Object} [detail.params] - Optional parameters for the navigation request.
+     * @example
+     * // Parent component HTML:
+     * // <c-child-component onnavigate={handleNavigation}></c-child-component>
+     *
+     * // Parent component JavaScript:
+     * // handleNavigation(event) {
+     * //   const { actionType, params } = event.detail;
+     * //   if (actionType === 'ComponentSwap') {
+     * //     this.currentView = params.view;
+     * //   }
+     * // }
+     */
     const swapEvent = new CustomEvent("navigate", {
       detail: navigationRequest,
       bubbles: true,
