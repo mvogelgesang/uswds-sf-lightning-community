@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <masterLabel>USWDSSide Navigation Menu</masterLabel>
+    <description>A configurable component to display USWDS side navigation menu.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+                name="menuDeveloperName"
+                type="String"
+                label="Navigation Menu"
+                description="Select the navigation menu to display."
+                datasource="apex://UswdsNavigationMenuDataSource" />
+            <property name="addHomeMenuItem" type="Boolean" default="false"
+                label="Include Home Menu Item?"
+                description="First entry in the navigation menu will be Home." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
