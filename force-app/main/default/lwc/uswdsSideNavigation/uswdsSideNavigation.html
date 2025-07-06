@@ -8,14 +8,22 @@
           for:index="index"
         >
           <li key={item.label} class={item.className}>
-            <a href="#" data-id={item.id} onclick={handleSelect}
+            <a
+              href="#"
+              data-id={item.id}
+              onclick={handleSelect}
+              aria-current={item.ariaCurrent}
               >{item.label}</a
             >
             <template lwc:if={item.hasSubMenu}>
               <ul class="usa-sidenav__sublist">
                 <template for:each={item.subMenuItems} for:item="subMenuItem">
-                  <li key={subMenuItem.label} class={item.className}>
-                    <a href="#" data-id={subMenuItem.id} onclick={handleSelect}
+                  <li key={subMenuItem.label} class={subMenuItem.className}>
+                    <a
+                      href="#"
+                      data-id={subMenuItem.id}
+                      onclick={handleSelect}
+                      aria-current={subMenuItem.ariaCurrent}
                       >{subMenuItem.label}</a
                     >
                   </li>
