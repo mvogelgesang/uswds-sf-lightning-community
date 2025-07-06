@@ -16,7 +16,7 @@ import { navigate } from "c/navigationUtils";
  * @description Recursively processes navigation items to mark the current item and generate CSS classes.
  * @param {Array} items - Array of navigation items to process
  * @param {string} currentId - The ID of the currently selected navigation item
- * @returns {Array} Array of navigation items with isCurrent flag and className properties
+ * @returns {Array} Array of navigation items with isCurrent flag, ariaCurrent attribute, and className properties
  * @private
  */
 function markCurrent(items, currentId) {
@@ -28,6 +28,7 @@ function markCurrent(items, currentId) {
     return {
       ...item,
       isCurrent,
+      ariaCurrent: isCurrent ? "page" : null,
       className: `usa-sidenav__item${isCurrent ? " usa-current" : ""}`,
       subMenuItems
     };
