@@ -17,11 +17,13 @@
         <name>uswdsBanner_lockedPadlockIcon</name>
     </customLabels>
     <customLabels>
-        <label>Un sitio web &lt;strong&gt;.gov&lt;/strong&gt; pertenece a una organización oficial del Gobierno de Estados Unidos.</label>
+        <label>Un sitio web &lt;strong&gt;.gov&lt;/strong&gt; pertenece a una organización oficial
+            del Gobierno de Estados Unidos.</label>
         <name>uswdsBanner_officialContent_gov</name>
     </customLabels>
     <customLabels>
-        <label>Un sitio web &lt;strong&gt;.mil&lt;/strong&gt; pertenece a una organización oficial del Departamento de Defensa de EE. UU.</label>
+        <label>Un sitio web &lt;strong&gt;.mil&lt;/strong&gt; pertenece a una organización oficial
+            del Departamento de Defensa de EE. UU.</label>
         <name>uswdsBanner_officialContent_mil</name>
     </customLabels>
     <customLabels>
@@ -33,11 +35,15 @@
         <name>uswdsBanner_officialTop_mil</name>
     </customLabels>
     <customLabels>
-        <label>o &lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros.</label>
+        <label>o &lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma
+            segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y
+            seguros.</label>
         <name>uswdsBanner_secureContentEnd_gov</name>
     </customLabels>
     <customLabels>
-        <label>o &lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma segura a un sitio web .mil. Comparta información sensible sólo en sitios web oficiales y seguros.</label>
+        <label>o &lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma
+            segura a un sitio web .mil. Comparta información sensible sólo en sitios web oficiales y
+            seguros.</label>
         <name>uswdsBanner_secureContentEnd_mil</name>
     </customLabels>
     <customLabels>
@@ -45,11 +51,15 @@
         <name>uswdsBanner_secureContentStart</name>
     </customLabels>
     <customLabels>
-        <label>&lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros.</label>
+        <label>&lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma segura
+            a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y
+            seguros.</label>
         <name>uswdsBanner_secureContent_gov</name>
     </customLabels>
     <customLabels>
-        <label>&lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma segura a un sitio web .mil. Comparta información sensible sólo en sitios web oficiales y seguros.</label>
+        <label>&lt;strong&gt;https://&lt;/strong&gt; significa que usted se conectó de forma segura
+            a un sitio web .mil. Comparta información sensible sólo en sitios web oficiales y
+            seguros.</label>
         <name>uswdsBanner_secureContent_mil</name>
     </customLabels>
     <customLabels>
@@ -60,69 +70,36 @@
         <label>Los sitios web seguros .mil usan HTTPS</label>
         <name>uswdsBanner_secureTop_mil</name>
     </customLabels>
-    <quickActions>
-        <label><!-- Guest Community Case --></label>
-        <name>GuestCommunityCase</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- LogACall --></label>
-        <name>LogACall</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewAccount --></label>
-        <name>NewAccount</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewCase --></label>
-        <name>NewCase</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- New Community Case --></label>
-        <name>NewCommunityCase</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewContact --></label>
-        <name>NewContact</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewEvent --></label>
-        <name>NewEvent</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewGroup --></label>
-        <name>NewGroup</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewLead --></label>
-        <name>NewLead</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewNote --></label>
-        <name>NewNote</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewOpportunity --></label>
-        <name>NewOpportunity</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- NewTask --></label>
-        <name>NewTask</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- SendEmail --></label>
-        <name>SendEmail</name>
-    </quickActions>
-    <reportTypes>
-        <description><!-- Screen Flows --></description>
-        <label><!-- Screen Flows --></label>
-        <name>screen_flows_prebuilt_crt</name>
-        <sections>
-            <label><!-- Flow Interview Log Entries --></label>
-            <name>Flow Interview Log Entries</name>
-        </sections>
-        <sections>
-            <label><!-- Flow Interview Logs --></label>
-            <name>Flow Interview Logs</name>
-        </sections>
-    </reportTypes>
+    <customLabels>
+        <label>Un sitio web oficial de</label>
+        <name>uswdsIdentifier_disclaimer</name>
+    </customLabels>
+    <customLabels>
+        <label>y</label>
+        <name>uswdsIdentifier_mastheadConjunction</name>
+    </customLabels>
+    <customLabels>
+        <label>Identificador de la agencia,</label>
+        <name>uswdsIdentifier_mastheadSectionLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Enlaces importantes,</label>
+        <name>uswdsIdentifier_requiredLinksSectionLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>Información y servicios del Gobierno de EE. UU.,</label>
+        <name>uswdsIdentifier_sectionUsaGov</name>
+    </customLabels>
+    <customLabels>
+        <label>Producido y publicado con dinero de los contribuyentes de impuestos.</label>
+        <name>uswdsIdentifier_taxpayerDisclaimer</name>
+    </customLabels>
+    <customLabels>
+        <label>¿Necesita información y servicios del Gobierno?</label>
+        <name>uswdsIdentifier_usaGovDesc</name>
+    </customLabels>
+    <customLabels>
+        <label>Visite USAGov en Español</label>
+        <name>uswdsIdentifier_usaGovLink</name>
+    </customLabels>
 </Translations>
