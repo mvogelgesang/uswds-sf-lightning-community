@@ -1,0 +1,94 @@
+<template>
+  <div class="usa-identifier">
+    <section
+      class="usa-identifier__section usa-identifier__section--masthead"
+      aria-label={label.uswdsIdentifier_mastheadSectionLabel}
+    >
+      <div class="usa-identifier__container">
+        <div class="usa-identifier__logos">
+          <template lwc:if={hasOneOrMoreFormattedMastheadMenuItems}>
+            <template for:each={mastheadMenuItems} for:item="item">
+              <a
+                href="javascript:void(0)"
+                class="usa-identifier__logo"
+                key={item.id}
+              >
+                <img
+                  class="usa-identifier__logo-img"
+                  src={item.imageUrl}
+                  alt={item.label}
+                  role="img"
+                />
+              </a>
+            </template>
+          </template>
+        </div>
+        <section
+          class="usa-identifier__identity"
+          aria-label="Agency description,,,"
+        >
+          <p class="usa-identifier__identity-domain">{domain}</p>
+          <p class="usa-identifier__identity-disclaimer">
+            {label.uswdsIdentifier_disclaimer}&nbsp;
+            <template
+              for:each={formattedMastheadMenuItems}
+              for:item="item"
+              for:index="index"
+            >
+              <a
+                onclick={handleSelect}
+                key={item.id}
+                class="usa-link"
+                data-id={item.id}
+                data-navtype="masthead"
+                >{item.label}</a
+              >
+              <template if:true={item.showComma}>
+                <span key={item.commaKey}>, </span>
+              </template>
+              <template if:true={item.showConjunction}>
+                <span key={item.conjunctionKey}> {mastheadConjunction} </span>
+              </template>
+            </template>
+            <template lwc:if={taxPayerDisclaimer}>
+              .&nbsp;{label.uswdsIdentifier_taxpayerDisclaimer}
+            </template>
+          </p>
+        </section>
+      </div>
+    </section>
+    <nav
+      class="usa-identifier__section usa-identifier__section--required-links"
+      aria-label={label.uswdsIdentifier_requiredLinksSectionLabel}
+    >
+      <div class="usa-identifier__container">
+        <ul class="usa-identifier__required-links-list">
+          <template for:each={mainMenuItems} for:item="item">
+            <li class="usa-identifier__required-links-item" key={item.id}>
+              <a
+                onclick={handleSelect}
+                class="usa-identifier__required-link usa-link"
+                data-id={item.id}
+                data-navtype="mainnav"
+                >{item.label}</a
+              >
+            </li>
+          </template>
+        </ul>
+      </div>
+    </nav>
+    <section
+      class="usa-identifier__section usa-identifier__section--usagov"
+      aria-label={label.uswdsIdentifier_sectionUsaGov}
+    >
+      <div class="usa-identifier__container">
+        <div class="usa-identifier__usagov-description">
+          {label.uswdsIdentifier_usaGovDesc}&nbsp;
+        </div>
+        <a href="https://www.usa.gov/" class="usa-link"
+          >{label.uswdsIdentifier_usaGovLink}</a
+        >
+      </div>
+    </section>
+  </div>
+</template>

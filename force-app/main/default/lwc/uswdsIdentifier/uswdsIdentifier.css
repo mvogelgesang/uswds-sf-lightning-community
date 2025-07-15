@@ -1,0 +1,7 @@
+:host {
+  --dxp-c-link-text-decoration: underline;
+  --dxp-s-link-text-decoration: underline;
+  --dxp-c-link-text-color: #dfe1e2;
+  --dxp-c-link-text-color-hover: #f0f0f0;
+  --dxp-s-link-text-color-hover: #f0f0f0;
+}
