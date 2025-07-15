@@ -105,4 +105,60 @@
         <shortDescription>uswdsBanner_secureTop_mil</shortDescription>
         <value>Secure .mil websites use HTTPS</value>
     </labels>
+    <labels>
+        <fullName>uswdsIdentifier_disclaimer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_disclaimer</shortDescription>
+        <value>An official website of the</value>
+    </labels>
+    <labels>
+        <fullName>uswdsIdentifier_mastheadConjunction</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_mastheadConjunction</shortDescription>
+        <value>and the</value>
+    </labels>
+    <labels>
+        <fullName>uswdsIdentifier_mastheadSectionLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_mastheadSectionLabel</shortDescription>
+        <value>Agency identifier,</value>
+    </labels>
+    <labels>
+        <fullName>uswdsIdentifier_requiredLinksSectionLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_requiredLinksSectionLabel</shortDescription>
+        <value>Important links,</value>
+    </labels>
+    <labels>
+        <fullName>uswdsIdentifier_sectionUsaGov</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_sectionUsaGov</shortDescription>
+        <value>U.S. government information and services,</value>
+    </labels>
+    <labels>
+        <fullName>uswdsIdentifier_taxpayerDisclaimer</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_taxpayerDisclaimer</shortDescription>
+        <value>Produced and published at taxpayer expense.</value>
+    </labels>
+    <labels>
+        <fullName>uswdsIdentifier_usaGovDesc</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_usaGovDesc</shortDescription>
+        <value>Looking for U.S. government information and services?</value>
+    </labels>
+    <labels>
+        <fullName>uswdsIdentifier_usaGovLink</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>uswdsIdentifier_usaGovLink</shortDescription>
+        <value>Visit USA.gov</value>
+    </labels>
 </CustomLabels>
