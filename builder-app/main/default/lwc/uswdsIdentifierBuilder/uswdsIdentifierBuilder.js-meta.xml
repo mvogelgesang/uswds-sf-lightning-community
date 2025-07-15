@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="domain" type="String" label="Domain"
+                description="The .gov/.mil domain at which the site is hosted." />
+            <property name="mastheadNavDeveloperName" type="String"
+                label="Masthead Navigation Menu"
+                description="Select the navigation menu to display."
+                datasource="apex://UswdsNavigationMenuDataSource" />
+            <property
+                name="mainNavDeveloperName"
+                type="String"
+                label="Main Navigation Menu"
+                description="Select the navigation menu to display."
+                datasource="apex://UswdsNavigationMenuDataSource" />
+            <property name="addHomeMenuItem" type="Boolean" default="false"
+                label="Include Home Menu Item?"
+                description="First entry in the navigation menu will be Home." />
+            <property name="taxPayerDisclaimer" type="Boolean" label="Show Taxpayer Disclaimer"
+                description="Turns on the taxpayer disclaimer. Not required for all sites." />
+        </targetConfig>
+    </targetConfigs>
+    <masterLabel>Identifier</masterLabel>
+</LightningComponentBundle>
