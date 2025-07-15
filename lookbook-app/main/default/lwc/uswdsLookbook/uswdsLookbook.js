@@ -24,6 +24,12 @@ export default class UswdsLookbook extends LightningElement {
       params: { view: "iconPreview" }
     },
     {
+      id: "identifierPreview",
+      label: "Identifier",
+      actionType: ActionTypes.ComponentSwap,
+      params: { view: "identifierPreview" }
+    },
+    {
       id: "sideNavigationPreview",
       label: "Side Navigation",
       actionType: ActionTypes.ComponentSwap,
@@ -46,6 +52,9 @@ export default class UswdsLookbook extends LightningElement {
   }
   get isIconPreview() {
     return this.currentView === "iconPreview";
+  }
+  get isIdentifierPreview() {
+    return this.currentView === "identifierPreview";
   }
   get isSideNavigationPreview() {
     return this.currentView === "sideNavigationPreview";
