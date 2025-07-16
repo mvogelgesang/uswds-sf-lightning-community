@@ -51,6 +51,7 @@ describe("c-uswds-identifier", () => {
     // Assert
     const div = element.shadowRoot.querySelector(".usa-identifier");
     expect(div).toBeTruthy();
+    await expect(element).toBeAccessible();
   });
 
   describe("formattedMastheadMenuItems", () => {
@@ -67,6 +68,7 @@ describe("c-uswds-identifier", () => {
         ".usa-identifier__identity-disclaimer a"
       );
       expect(disclaimerItems.length).toEqual(0);
+      await expect(element).toBeAccessible();
     });
 
     it("should return single agency without formatting", async () => {
@@ -85,6 +87,7 @@ describe("c-uswds-identifier", () => {
       );
       expect(disclaimerItems.length).toEqual(1);
       expect(disclaimerItems[0].innerHTML).toEqual("Department of Defense");
+      await expect(element).toBeAccessible();
     });
 
     it("should format two agencies with conjunction on second item", async () => {
@@ -115,6 +118,7 @@ describe("c-uswds-identifier", () => {
           "Department of Defense and the Department of Homeland Security"
         )
       );
+      await expect(element).toBeAccessible();
     });
 
     it("should format three agencies with comma and conjunction", async () => {
@@ -151,6 +155,7 @@ describe("c-uswds-identifier", () => {
           "Department of Defense, Department of Homeland Security and the Department of Justice"
         )
       );
+      await expect(element).toBeAccessible();
     });
 
     it("should handle undefined mastheadMenuItems", async () => {
