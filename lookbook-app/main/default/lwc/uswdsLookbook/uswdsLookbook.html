@@ -15,18 +15,24 @@
         class="tablet:grid-col-9 bg-white border border-base-dark radius-md padding-2"
       >
         <div class="content">
-          <template lwc:if={isButtonPreview}>
-            <c-button-preview></c-button-preview>
-          </template>
-          <template lwc:if={isIconPreview}>
-            <c-icon-preview></c-icon-preview>
-          </template>
-          <template lwc:if={isIdentifierPreview}>
-            <c-identifier-preview></c-identifier-preview>
-          </template>
-          <template lwc:if={isSideNavigationPreview}>
-            <c-side-navigation-preview></c-side-navigation-preview>
-          </template>
+          <div class="slds-theme_default">
+            <h2 class="font-serif-2xl padding-bottom-4">{currentNavLabel}</h2>
+            <template lwc:if={isButtonPreview}>
+              <c-button-preview></c-button-preview>
+            </template>
+            <template lwc:if={isFooterPreview}>
+              <c-footer-preview></c-footer-preview>
+            </template>
+            <template lwc:if={isIconPreview}>
+              <c-icon-preview></c-icon-preview>
+            </template>
+            <template lwc:if={isIdentifierPreview}>
+              <c-identifier-preview></c-identifier-preview>
+            </template>
+            <template lwc:if={isSideNavigationPreview}>
+              <c-side-navigation-preview></c-side-navigation-preview>
+            </template>
+          </div>
         </div>
       </div>
     </div>
