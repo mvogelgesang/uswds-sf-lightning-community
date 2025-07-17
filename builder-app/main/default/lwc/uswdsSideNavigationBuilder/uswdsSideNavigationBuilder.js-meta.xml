@@ -20,7 +20,7 @@
                 datasource="apex://UswdsNavigationMenuDataSource" />
             <property name="addHomeMenuItem" type="Boolean" default="false"
                 label="Include Home Menu Item?"
-                description="First entry in the navigation menu will be Home." />
+                description="First entry in the navigation menu will be Home. Only applies to Main Navigation Menu." />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
